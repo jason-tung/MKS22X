@@ -1,14 +1,14 @@
 public class Recursion{
     public static void main(String[] args){
 	Recursion jerry = new Recursion();
-	//System.out.println(jerry.fact(-1));
-	System.out.println(jerry.fib(0));
-	System.out.println(jerry.fib(1));
-	System.out.println(jerry.fib(2));
-	System.out.println(jerry.fib(3));
-	System.out.println(jerry.fib(4));
-	System.out.println(jerry.fib(5));
-	System.out.println(jerry.fib(10));
+	//System.out.println(jerry.sqrt(-1));
+	System.out.println(jerry.sqrt(0));
+	System.out.println(jerry.sqrt(1));
+	System.out.println(jerry.sqrt(2));
+	System.out.println(jerry.sqrt(3));
+	System.out.println(jerry.sqrt(4));
+	System.out.println(jerry.sqrt(5));
+	System.out.println(jerry.sqrt(10));
     }
 
     public int fact(int n){
@@ -38,5 +38,22 @@ public class Recursion{
 	}
 	return fibHelper(n-1,b,a+b);
     }
-    
+
+    public double sqrt(double n){
+	if (n < 0){
+	    throw new IllegalArgumentException("n must be > 0");
+	}
+	if (n == 0){
+	    return 0;
+	}
+        return sqrtHelper(n,n/2.);
+    }
+
+    public double sqrtHelper(double target, double guess){
+	if (Math.abs(guess * guess - target) / target < 0.0001){
+	    return guess;
+	}
+	return sqrtHelper(target, (target / guess + guess) / 2);
+    }
+	
 }
