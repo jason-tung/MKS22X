@@ -1,0 +1,25 @@
+
+
+public class QueenBoard{
+    private int[][]board;
+    private int size;
+
+    public QueenBoard(int size){
+	this.size = size;
+	board = new int[size][size];
+	for (int x = 0; x < size; x++){
+	    for (int y = 0; y < size; y++){
+		board[y][x] = 0;
+	    }
+	}
+    }
+
+    private boolean addQueen(int r, int c){
+	
+    }
+    private boolean removeQueen(int r, int c){
+	
+    }
+
+    
+}
