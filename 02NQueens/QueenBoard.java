@@ -18,7 +18,7 @@ public class QueenBoard{
     }
 
     public String toString(){
-	String str = "";
+	String str = "\n";
 	for (int y = 0; y < size; y++){
 	    for (int x = 0; x < size; x++){
 		int ref = board[y][x];
