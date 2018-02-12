@@ -63,7 +63,7 @@ public class QueenBoard{
 	}
     }
     
-    private boolean removeQueen(int r, int c){
+    private boolean removeQueen(int r, int c){ 
 	return false;
     }
 
