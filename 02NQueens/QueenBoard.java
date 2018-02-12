@@ -42,14 +42,14 @@ public class QueenBoard{
         if (board[r][c] == 0){
 	    board[r][c] = -1;
 	    for (int i = 1; i < size; i++){
-	        theDeed(r + i, c);
-		theDeed(r - i, c);
-		theDeed(r + i, c + i);
-		theDeed(r - i, c + i);
-		theDeed(r + i, c - i);
-		theDeed(r - i, c - i);
-		theDeed(r, c + i);
-		theDeed(r, c - i);
+	        theDeed(r + i, c, 1);
+		theDeed(r - i, c, 1);
+		theDeed(r + i, c + i, 1);
+		theDeed(r - i, c + i, 1);
+		theDeed(r + i, c - i, 1);
+		theDeed(r - i, c - i, 1);
+		theDeed(r, c + i, 1);
+		theDeed(r, c - i, 1);
       	    }
 	    return true;
 	}
@@ -57,13 +57,28 @@ public class QueenBoard{
 	return false;
     }
 
-    private void theDeed(int r, int c){
+    private void theDeed(int r, int c, int incr){
 	if (r < size && r >= 0 && c < size && c >= 0){
-	    board[r][c]++;
+	    board[r][c]+= incr;
 	}
     }
     
     private boolean removeQueen(int r, int c){ 
+         if (board[r][c] == -1){
+	     board[r][c] = 0;
+	    for (int i = 1; i < size; i++){
+	        theDeed(r + i, c, -1);
+		theDeed(r - i, c, -1);
+		theDeed(r + i, c + i, -1);
+		theDeed(r - i, c + i, -1);
+		theDeed(r + i, c - i, -1);
+		theDeed(r - i, c - i, -1);
+		theDeed(r, c + i, -1);
+		theDeed(r, c - i, -1);
+      	    }
+	    return true;
+	}
+	//System.out.println("row : " + r + " col: " + c + " failed");
 	return false;
     }
 
@@ -76,6 +91,10 @@ public class QueenBoard{
 	 System.out.println(dog.addQueen(4,5));
 	 System.out.println(dog);
  	System.out.println(dog.addQueen(0,1));
+	System.out.println(dog);
+	System.out.println(dog.removeQueen(0,1));
+	System.out.println(dog);
+	System.out.println(dog.removeQueen(0,1));
 	System.out.println(dog);
     }
 	
