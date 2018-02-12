@@ -82,6 +82,26 @@ public class QueenBoard{
 	return false;
     }
 
+    public boolean solve(){
+	for (int[] x: board){
+	    for (int y : x){
+		if (y != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	
+	return solverH(0);
+    }
+
+    public boolean solverH(int col){
+	if (col == size){
+	    return true;
+	}
+	for (){
+	}
+    
+    
     public static void main(String[] args){
 	QueenBoard dog = new QueenBoard(Integer.parseInt(args[0]));
 	System.out.println(dog.addQueen(2,5));
