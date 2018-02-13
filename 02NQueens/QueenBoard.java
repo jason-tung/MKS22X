@@ -8,11 +8,6 @@ public class QueenBoard{
 	}
 	this.size = size;
 	board = new int[size][size];
-	for (int x = 0; x < size; x++){
-	    for (int y = 0; y < size; y++){
-		board[y][x] = 0;
-	    }
-	}
     }
 
     public String toString(){
@@ -98,8 +93,10 @@ public class QueenBoard{
 	if (col == size){
 	    return true;
 	}
-	for (){
-	}
+	//for (){
+	//}
+	return false;
+    }
     
     
     public static void main(String[] args){
