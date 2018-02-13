@@ -54,5 +54,13 @@ public class KnightBoard{
 	return str;
     }
 
+    public boolean solve(int r, int c){
+	return solveH(r, c, 0);
+    }
+
+    public boolean solveH(int r, int c, int level){
+	return true;
+    }
+
     
 }
