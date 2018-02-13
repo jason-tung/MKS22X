@@ -22,7 +22,7 @@ public class QueenBoard{
 		    str += "\033[0;32m 0 \033[0m"; 
 		}
 		else{
-		    str += "\033[0;31m "+ ref  +" \033[0m";
+		    str += "\033[0;31m x \033[0m";
 		}
 		if (x == size - 1){
 		    str += "\n";
@@ -34,6 +34,7 @@ public class QueenBoard{
     }
 
     private boolean addQueen(int r, int c){
+	if (r >= size || c >= size) return false;
         if (board[r][c] == 0){
 	    board[r][c] = -1;
 	    for (int i = 1; i < size; i++){
@@ -89,30 +90,52 @@ public class QueenBoard{
 	return solverH(0);
     }
 
-    public boolean solverH(int col){
-	if (col == size){
+    public boolean solverH(int row){
+	if (row == size){
 	    return true;
 	}
-	//for (){
-	//}
+	for (int col = 0; col < size; col++){
+	    if (addQueen(row,col) && solverH(row + 1)){
+		return true;
+	    }
+	    removeQueen(row,col);
+	   
+	}
+	return false;
+    }
+
+    public boolean countSolutions(){
+	for (int[] x: board){
+	    for (int y : x){
+		if (y != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	
+	return countH(0,0);
+    }
+
+    public boolean countH(int row, int tot){
+	if (row == size){
+	    return true;
+	}
+	for (int col = 0; col < size; col++){
+	    if (addQueen(row,col) && countH(row + 1)){
+		return true;
+	    }
+	    removeQueen(row,col);
+	   
+	}
 	return false;
     }
     
-    
     public static void main(String[] args){
 	QueenBoard dog = new QueenBoard(Integer.parseInt(args[0]));
-	System.out.println(dog.addQueen(2,5));
-	 System.out.println(dog);
-	System.out.println(dog.addQueen(5,5));
-	 System.out.println(dog);
-	 System.out.println(dog.addQueen(4,5));
-	 System.out.println(dog);
- 	System.out.println(dog.addQueen(0,1));
+	System.out.println(dog.solve());
 	System.out.println(dog);
-	System.out.println(dog.removeQueen(0,1));
-	System.out.println(dog);
-	System.out.println(dog.removeQueen(0,1));
-	System.out.println(dog);
+	System.out.println(dog.solve());
+
     }
 	
 
