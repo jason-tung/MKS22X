@@ -121,8 +121,8 @@ public class QueenBoard{
 	    return true;
 	}
 	for (int col = 0; col < size; col++){
-	    if (addQueen(row,col) && countH(row + 1)){
-		return true;
+	    if (addQueen(row,col) && countH(row + 1, tot)){
+		return countH(row + 1, tot++);
 	    }
 	    removeQueen(row,col);
 	   
@@ -134,7 +134,7 @@ public class QueenBoard{
 	QueenBoard dog = new QueenBoard(Integer.parseInt(args[0]));
 	System.out.println(dog.solve());
 	System.out.println(dog);
-	System.out.println(dog.solve());
+	//System.out.println(dog.solve());
 
     }
 	
