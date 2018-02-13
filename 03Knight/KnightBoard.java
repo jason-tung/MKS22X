@@ -69,7 +69,7 @@ public class KnightBoard{
 		    String dog;
 		    if (ref < 10) dog = "0" + ref;
 		    else dog = ""+  ref;
-		    str += "\033[0;31m "+ dog  +"\033[0m";
+		    str += "\033[0;31m "+ dog  +" \033[0m";
 		}
 		if (x == xsize - 1){
 		    str += "\n";
