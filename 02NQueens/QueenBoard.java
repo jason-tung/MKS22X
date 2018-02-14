@@ -3,7 +3,7 @@ public class QueenBoard{
     private int size;
 
     public QueenBoard(int size){
-	if (size <= 0){
+	if (size < 0){
 	    throw new IllegalArgumentException("size cannot be <= 0");
 	}
 	this.size = size;
@@ -19,7 +19,7 @@ public class QueenBoard{
 		    str += "\033[0;36m Q \033[0m";
 		}
 		else if (ref == 0){
-		    str += "\033[0;32m 0 \033[0m"; 
+		    str += "\033[0;32m _ \033[0m"; 
 		}
 		else{
 		    str += "\033[0;31m x \033[0m";
@@ -142,4 +142,5 @@ public class QueenBoard{
 	}	
     }
     
+  
 }
