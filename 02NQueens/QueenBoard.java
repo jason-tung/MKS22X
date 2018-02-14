@@ -71,7 +71,7 @@ public class QueenBoard{
 		theDeed(r - i, c - i, -1);
 		theDeed(r, c + i, -1);
 		theDeed(r, c - i, -1);
-      	    }
+	    }
 	    return true;
 	}
 	//System.out.println("row : " + r + " col: " + c + " failed");
@@ -96,11 +96,13 @@ public class QueenBoard{
 	}
 	for (int col = 0; col < size; col++){
 	    if (addQueen(row,col) && solverH(row + 1)){
+
 		return true;
 	    }
 	    removeQueen(row,col);
 	   
 	}
+
 	return false;
     }
 
