@@ -131,15 +131,15 @@ public class QueenBoard{
     }
     
     public static void main(String[] args){
-	QueenBoard dog = new QueenBoard(Integer.parseInt(args[0]));
-	System.out.println(dog.countSolutions());
-	System.out.println(dog);
-	System.out.println(dog.solve());
-	System.out.println(dog);
-	System.out.println(dog.countSolutions());
-	System.out.println(dog);
+	QueenBoard dog = new QueenBoard(Integer.parseInt(args[1]));
+        if (args[0].equals("solve")){
+	    System.out.println(dog.solve());
+	    System.out.println(dog);
+	}
+	else{
+	    System.out.println(dog.countSolutions());
+	    System.out.println(dog);
+	}	
     }
-	
-
     
 }
