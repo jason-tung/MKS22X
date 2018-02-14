@@ -104,7 +104,7 @@ public class QueenBoard{
 	return false;
     }
 
-    public boolean countSolutions(){
+    public int countSolutions(){
 	for (int[] x: board){
 	    for (int y : x){
 		if (y != 0){
@@ -113,29 +113,31 @@ public class QueenBoard{
 	    }
 	}
 	
-	return countH(0,0);
+	return countH(0);
     }
 
-    public boolean countH(int row, int tot){
+    public int countH(int row){
+	int dog = 0;
 	if (row == size){
-	    return true;
+	    return 1;
 	}
 	for (int col = 0; col < size; col++){
-	    if (addQueen(row,col) && countH(row + 1, tot)){
-		return countH(row + 1, tot++);
-	    }
-	    removeQueen(row,col);
-	   
+	    if (addQueen(row,col)){
+		dog += countH(row + 1);
+		removeQueen(row, col);
+	    }	   
 	}
-	return false;
+	return dog;
     }
     
     public static void main(String[] args){
 	QueenBoard dog = new QueenBoard(Integer.parseInt(args[0]));
+	System.out.println(dog.countSolutions());
+	System.out.println(dog);
 	System.out.println(dog.solve());
 	System.out.println(dog);
-	//System.out.println(dog.solve());
-
+	System.out.println(dog.countSolutions());
+	System.out.println(dog);
     }
 	
 
