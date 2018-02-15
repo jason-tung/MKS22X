@@ -1,3 +1,6 @@
+//5x5 count sol (0,0) 304
+//5x5 add all count sols 1728
+
 public class KnightBoard{
     public static void main(String[] dogs){
 
@@ -22,18 +25,11 @@ public class KnightBoard{
 	for (int y = 0; y < ysize; y++){
 	    for (int x = 0; x < xsize; x++){
 		int ref = board[y][x];
-		if (ref == -1){
-		    str += "\033[0;36m KN \033[0m";
-		}
-		else if (ref == 0){
-		    str += "\033[0;32m 00 \033[0m"; 
-		}
-		else{
-		    String dog;
-		    if (ref < 10) dog = "0" + ref;
-		    else dog = ""+  ref;
-		    str += "\033[0;31m "+ "00"  +" \033[0m";
-		}
+		String dog;
+		if (ref < 10) dog = "0" + ref;
+		else dog = ""+  ref;
+		str += "\033[0;31m "+ ref  +" \033[0m";
+
 		if (x == xsize - 1){
 		    str += "\n";
 		}
@@ -43,9 +39,9 @@ public class KnightBoard{
 	return str;
     }
 
-    public boolean addKnight(int r, int c){
+    public boolean addKnight(int r, int c, int level){
 	if (r >= 0 && r < ysize && c >= 0 && c < xsize && board[r][c] == 0){
-	    board[r][c] = -1;
+	    board[r][c] = level;
 	    //System.out.println(this);
 	    return true;
 	}
@@ -68,7 +64,7 @@ public class KnightBoard{
         if (level == xsize * ysize){
 	    return true;
 	}
-        if (addKnight(r,c)){
+        if (addKnight(r,c,level)){
 	    return solveH(r+2, c+1, level+1) || solveH(r+2, c-1, level+1) ||
 		solveH(r-2, c+1, level+1) || solveH(r-2, c-1, level+1) ||
 		solveH(r+1, c+2, level+1) || solveH(r+1, c-2, level+1) ||
