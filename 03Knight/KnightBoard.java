@@ -5,7 +5,7 @@ public class KnightBoard{
     public static void main(String[] dogs){
 
 	KnightBoard dog = new KnightBoard(Integer.parseInt(dogs[0]), Integer.parseInt(dogs[1]));
-	System.out.println(dog.solve(2,1));
+	System.out.println(dog.CountSolutions(0,0));
 	System.out.println(dog);
 
     }
@@ -89,6 +89,37 @@ public class KnightBoard{
 	return false;
     }
 
-    
+     public int CountSolutions(int r, int c){
+	if (r < 0 || c < 0) throw new IllegalArgumentException();
+	for (int[] x: board){
+	    for (int y: x){
+		if (y != 0) throw new IllegalStateException();
+	    }
+	}
+	return countH(r, c, 1);
+    }
+
+    public int countH(int r, int c, int level){
+
+	int tot = 0;
+	
+	 
+        if (level == colsize * rowsize ){
+	    if( addKnight(r,c,level))
+		return 1;
+	}
+        if (addKnight(r,c,level)){
+	    //System.out.println(this);
+	    int[][] cat = {{2,1},{2,-1},{1,2},{1,-2},{-1,2},{-1,-2},{-2,1},{-2,-1}};
+	    for (int kitten = 0; kitten < 8; kitten++){
+		tot += (countH(r + cat[kitten][0], c + cat[kitten][1], level + 1));
+		   
+		// System.out.println(removeKnight(r,c));
+	    }
+	    removeKnight(r,c);
+	}
+	return tot;
+    }
+
     
 }
