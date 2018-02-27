@@ -136,6 +136,7 @@ public class KnightBoard{
     // 	    removeKnight(r,c);
     // 	}
     // 	return tot;
+
 	
     }
 
