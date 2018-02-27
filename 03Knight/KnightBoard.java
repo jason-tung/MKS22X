@@ -6,6 +6,7 @@ public class KnightBoard{
 
 	KnightBoard dog = new KnightBoard(Integer.parseInt(dogs[0]), Integer.parseInt(dogs[1]));
 	System.out.println(dog.countSolutions(0,0));
+	System.out.println(dog.solve(0,0));
 	System.out.println(dog);
 
     }
@@ -42,24 +43,24 @@ public class KnightBoard{
     }
 
 
-    public boolean addKnight(int r, int c, int level){
-	if (r >= 0 && r < rowsize && c >= 0 && c < colsize && board[r][c] == 0){
-	    board[r][c] = level;
-	    //System.out.println(this);
-	    return true;
-	}
-	// System.out.println("row: " + r + " col: " + c + " level:" + level);
-	// System.out.println("rowsize: " + rowsize + " colsize: " + colsize);
-	return false;
-    }
+    // public boolean addKnight(int r, int c, int level){
+    // 	if (r >= 0 && r < rowsize && c >= 0 && c < colsize && board[r][c] == 0){
+    // 	    board[r][c] = level;
+    // 	    //System.out.println(this);
+    // 	    return true;
+    // 	}
+    // 	// System.out.println("row: " + r + " col: " + c + " level:" + level);
+    // 	// System.out.println("rowsize: " + rowsize + " colsize: " + colsize);
+    // 	return false;
+    // }
 
-    public boolean removeKnight(int r, int c){
-	if (r >= 0 && r < rowsize && c >= 0 && c < colsize){
-	    board[r][c] = 0;
-	    return true;
-	}
-	return false;
-    }
+    // public boolean removeKnight(int r, int c){
+    // 	if (r >= 0 && r < rowsize && c >= 0 && c < colsize){
+    // 	    board[r][c] = 0;
+    // 	    return true;
+    // 	}
+    // 	return false;
+    // }
 
     public boolean solve(int r, int c){
 	if (r < 0 || c < 0) throw new IllegalArgumentException();
@@ -73,22 +74,35 @@ public class KnightBoard{
 
     public boolean solveH(int r, int c, int level){
         if (level == colsize * rowsize ){
-	    return addKnight(r,c,level);
+	    return true;
 	}
-        if (addKnight(r,c,level)){
-	    //System.out.println(this);
-	    
-	    for (int kitten = 0; kitten < 8; kitten++){
-		if (solveH(r + cat[kitten][0], c + cat[kitten][1], level + 1)){
+	for (int kittens[]: cat){
+	    int potr = r + kittens[0];
+	    int potc = c + kittens[1];
+	    if (potr >= 0 && potr < rowsize && potc >= 0 && potc < colsize && board[potr][potc] == 0){
+		board[r][c] = level;
+		if(solveH( potr,  potc,  level + 1)){
 		    return true;
-		    // System.out.println(removeKnight(r,c));
-		}		
+		}
+		board[r][c] = 0;
 	    }
-	    removeKnight(r,c);
 	}
-        
 	return false;
     }
+        // if (addKnight(r,c,level)){
+	//     //System.out.println(this);
+	    
+	//     for (int kitten = 0; kitten < 8; kitten++){
+	// 	if (solveH(r + cat[kitten][0], c + cat[kitten][1], level + 1)){
+	// 	    return true;
+	// 	    // System.out.println(removeKnight(r,c));
+	// 	}		
+	//     }
+	//     removeKnight(r,c);
+	// }
+        
+	// return false;
+    
 
      public int countSolutions(int r, int c){
 	if (r < 0 || c < 0) throw new IllegalArgumentException();
@@ -118,7 +132,7 @@ public class KnightBoard{
 	    }
 	}
 	return tot;
-		
+    }	
 	
 	 
     //     if (level == colsize * rowsize ){
@@ -137,8 +151,7 @@ public class KnightBoard{
     // 	}
     // 	return tot;
 
-	
-    }
+       
 
     
 }
