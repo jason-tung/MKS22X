@@ -73,7 +73,8 @@ public class KnightBoard{
     }
 
     public boolean solveH(int r, int c, int level){
-        if (level == colsize * rowsize ){
+        if (level == colsize * rowsize){
+	    board[r][c] = level;
 	    return true;
 	}
 	for (int kittens[]: cat){
