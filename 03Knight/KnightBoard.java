@@ -5,7 +5,17 @@ public class KnightBoard{
     public static void main(String[] dogs){
 
 	KnightBoard dog = new KnightBoard(Integer.parseInt(dogs[0]), Integer.parseInt(dogs[1]));
+<<<<<<< HEAD
 	System.out.println(dog.solveFast(0,0));
+=======
+        for (int y = 0; y < dog.rowsize; y++){
+	    for (int x = 0; x < dog.colsize; x++){
+		//if (board[y][x] != 0) throw new IllegalStateException();
+		diagram(y,x);
+	    }
+	}
+	System.out.println(toString(dog.diagram));
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
 	System.out.println(dog);
 
     }
@@ -111,26 +121,42 @@ public class KnightBoard{
 	return false;
     }
 
+<<<<<<< HEAD
     public boolean solveFast(int r, int c){
+=======
+    public boolean fastSolve(int r, int c){
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
 	if (r < 0 || c < 0) throw new IllegalArgumentException();
 	for (int y = 0; y < rowsize; y++){
 	    for (int x = 0; x < colsize; x++){
 		if (board[y][x] != 0) throw new IllegalStateException();
+<<<<<<< HEAD
 		//diagram(y,x);
+=======
+		diagram(y,x);
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
 	    }
 	}
 	
 	
+<<<<<<< HEAD
 	return solveFast(r, c, 1);
     }
 
     public boolean solveFast(int r, int c, int level){
 	
 
+=======
+	return fastSolve(r, c, 1);
+    }
+
+    public boolean fastSolve(int r, int c, int level){
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
         if (level == colsize * rowsize){
 	    board[r][c] = level;
 	    return true;
 	}
+<<<<<<< HEAD
 	if (board[r][c] != 0) return false;
 	for (int kittens[]: cat){
 	    int potr = r + kittens[0];
@@ -189,6 +215,26 @@ public class KnightBoard{
 	    diagram[r][c] = 0;
 	}
        
+=======
+	for (int kittens[]: cat){
+	    int potr = r + kittens[0];
+	    int potc = c + kittens[1];
+	    if (potr >= 0 && potr < rowsize && potc >= 0 && potc < colsize && board[potr][potc] == 0){
+		board[r][c] = level;
+		if(fastSolve( potr,  potc,  level + 1)){
+		    return true;
+		}
+		board[r][c] = 0;
+	    }
+	}
+	return false;
+    }
+
+    public void diagram(int r, int c){
+	if (board[r][c] != 0){
+	    diagram[r][c] = 0;
+	}
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
 	else{
 	    for (int kittens[]: cat){
 		int potr = r + kittens[0];
@@ -196,10 +242,15 @@ public class KnightBoard{
 		if (potr >= 0 && potr < rowsize && potc >= 0 && potc < colsize && board[potr][potc] == 0){
 		    diagram[r][c]++;
 		}
+<<<<<<< HEAD
 	    
 	    }
 	}
 	
+=======
+	    }
+	}
+>>>>>>> 3ed1521e011934235f0c1eb947af189db7eb37ae
 	    
     }
         // if (addKnight(r,c,level)){
