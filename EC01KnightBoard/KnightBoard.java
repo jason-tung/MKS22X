@@ -5,7 +5,7 @@ public class KnightBoard{
     public static void main(String[] dogs){
 
 	KnightBoard dog = new KnightBoard(Integer.parseInt(dogs[0]), Integer.parseInt(dogs[1]));
-	System.out.println(dog.solveFast(0,0));
+	System.out.println(dog.solve(0,0));
 	System.out.println(dog);
 
     }
@@ -89,7 +89,7 @@ public class KnightBoard{
 		if (y != 0) throw new IllegalStateException();
 	    }
 	}
-	return solveH(r, c, 1);
+	return solveFast(r, c, 1);
     }
 
     public boolean solveH(int r, int c, int level){
