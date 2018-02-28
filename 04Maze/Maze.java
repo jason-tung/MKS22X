@@ -4,7 +4,7 @@ public class Maze{
 
     public static void main(String[] dogs){
 	try{
-	    Scanner dog = new Scanner(new File(dogs[0]));
+	    Maze dog = new Maze(dogs[0]);
 	    System.out.println(dog);
 	}
 	catch (FileNotFoundException e){
@@ -13,6 +13,11 @@ public class Maze{
     }
     private char[][]maze;
     private boolean animate;
+
+    public String toString(){
+	for(int r = 0; r < char.size; r++){
+	    for(int c = 0; c < char.size; c++){
+		
 
     public Maze(String filename) throws FileNotFoundException, IllegalStateException{
          
