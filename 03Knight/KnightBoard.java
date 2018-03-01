@@ -89,7 +89,7 @@ public class KnightBoard{
 		if (y != 0) throw new IllegalStateException();
 	    }
 	}
-	return solveH(r, c, 1);
+	return solveFast(r, c, 1);
     }
 
     public boolean solveH(int r, int c, int level){
