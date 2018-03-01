@@ -8,27 +8,50 @@ public class Maze{
 	    System.out.println(dog);
 	}
 	catch (FileNotFoundException e){
-	    
+	    System.out.println("wat da fak");
+	    //System.exit(1);
 	}
     }
     private char[][]maze;
     private boolean animate;
 
     public String toString(){
-	for(int r = 0; r < char.size; r++){
-	    for(int c = 0; c < char.size; c++){
-		
+	String str = "";
+	for(int r = 0; r < maze.length; r++){
+	    for(int c = 0; c < maze[0].length; c++){
+		str += maze[r][c];
+		if (c == maze[0].length-1){
+		    str += "\n";
+		}
+	    }
+	}
+	return str;
+    }
 
     public Maze(String filename) throws FileNotFoundException, IllegalStateException{
-         
+        Scanner dogs = new Scanner(new File(filename));
+	int numrow = 0;
+	int numcol = 0;
+	String cat = "";
+	while (dogs.hasNextLine()){
+	    cat = dogs.nextLine();
+	    numrow++;
+	}
+	numcol = cat.length();
+	maze = new char[numrow][numcol];
 	Scanner dog = new Scanner(new File(filename));
+	int nums = 0;
+	int nume = 0;
 	while(dog.hasNextLine()){
-	    incr = 0;
+	    int incr = 0;
 	    
 	    String line = dog.nextLine();
 	    for (int x = 0; x < line.length(); x++){
+		if (maze[incr][x] == 'S') nums++;
+		if (maze[incr][x] == 'E') nume++;
+		if (nums > 1 || nume > 1) throw new IllegalStateException();
 		maze[incr][x] = line.charAt(x);
-	    }
+	    }   
 	    incr++;
 	}
 	
