@@ -8,7 +8,7 @@ public class Maze{
 	    System.out.println(dog);
 	}
 	catch (FileNotFoundException e){
-	    System.out.println("wat da fak");
+	    System.out.println("error error 123");
 	    //System.exit(1);
 	}
     }
@@ -52,7 +52,8 @@ public class Maze{
 		maze[r][c] = line.charAt(c);
 		if (maze[r][c] == 'S') nums++;
 		if (maze[r][c] == 'E') nume++;
-		if (nums > 1 || nume > 1) throw new IllegalStateException();
+		if (nums > 1) throw new IllegalStateException("only one start space, please.");
+		if (nume > 1) throw new IllegalStateException("only one end space, please.");
 		
 	    }   
 	    r++;
