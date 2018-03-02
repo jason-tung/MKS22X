@@ -42,17 +42,20 @@ public class Maze{
 	Scanner dog = new Scanner(new File(filename));
 	int nums = 0;
 	int nume = 0;
+	 int r = 0;
 	while(dog.hasNextLine()){
-	    int incr = 0;
+	   
 	    
-	    String line = dog.nextLine();
-	    for (int x = 0; x < line.length(); x++){
-		if (maze[incr][x] == 'S') nums++;
-		if (maze[incr][x] == 'E') nume++;
+	    String line = dog.nextLine(); 
+	    for (int c = 0; c < line.length(); c++){
+		//System.out.println(line.charAt(c));
+		maze[r][c] = line.charAt(c);
+		if (maze[r][c] == 'S') nums++;
+		if (maze[r][c] == 'E') nume++;
 		if (nums > 1 || nume > 1) throw new IllegalStateException();
-		maze[incr][x] = line.charAt(x);
+		
 	    }   
-	    incr++;
+	    r++;
 	}
 	
     }
