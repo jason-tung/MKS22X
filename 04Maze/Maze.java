@@ -96,7 +96,7 @@ public class Maze{
 private int solve(int row, int col, int lvl){
         if(animate){
             clearTerminal();
-            System.out.println("now checking: " + row + "," + col + " level: " + lvl);
+            //System.out.println("now checking: " + row + "," + col + " level: " + lvl);
             System.out.println(this);
 
             wait(20);
