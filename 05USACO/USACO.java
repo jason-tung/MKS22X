@@ -20,10 +20,11 @@ public class USACO{
 			    if (okay == 3) n = ref;
 			    okay++;
 			}
-			Scanner in2 = new Scanner(new File(input));
 			int[][] map = new int[r][c];
 			int[][] commands = new int[n][3];
 			int lineno = 0;
+			Scanner in2 = new Scanner(new File(input));
+			
 			while(in2.hasNextLine()){
 			    String ref = in2.nextLine();
 			    if (lineno > 0 && lineno < r + 1){
@@ -94,14 +95,24 @@ public class USACO{
 
         return -1;
       }
-
 	}
 
 	public static String toString(int[][] ary){
 		String str = "";
 		for (int x = 0; x < ary.length; x++){
 			for (int y = 0; y< ary[0].length;y++){
-				if (ary[x][y] < 10) str+= "0";
+				if (ary[x][y] < 10 && ary[x][y] >= 0) str+= "0";
+				str += ary[x][y] + " ";
+				if (y == ary[0].length - 1) str+="\n";
+			}
+		}
+		return str;
+	}
+
+	public static String toString(char[][] ary){
+		String str = "";
+		for (int x = 0; x < ary.length; x++){
+			for (int y = 0; y< ary[0].length;y++){
 				str += ary[x][y] + " ";
 				if (y == ary[0].length - 1) str+="\n";
 			}
@@ -135,8 +146,141 @@ public class USACO{
 		return listy;
     }
 
+    public static int silver(String filename){
+    	try{
+	    	int rows = 0;
+	    	int cols = 0;
+	    	int irow = 0;
+	    	int icol = 0;
+	    	int frow = 0;
+	    	int fcol = 0;
+	    	int moves = 0;
+
+
+	    	int okay = 0;
+	    	Scanner in = new Scanner(new File(filename));	
+	    	while (in.hasNextLine()){
+	    		String ref = in.nextLine();
+	    		if (okay == 0) {
+	    			int[] dogs = parse(ref,3);
+	    			rows = dogs[0];
+	    			cols = dogs[1];
+	    			moves = dogs[2];
+	    		}
+	    		else if (okay == rows + 1){
+	    			int[] dogs = parse(ref,4);
+	    			irow = dogs[0] - 1;
+	    			icol = dogs[1] - 1;
+	    			frow = dogs[2] - 1 ;
+	    			fcol = dogs[3] - 1;
+	    		}
+	    		okay++; 
+	    	}
+
+	    	char[][] charmap = new char[rows][cols];
+			int[][] oldmap = new int[rows][cols];
+			int[][] newmap = new int[rows][cols];
+			okay = 0;
+	    	Scanner in2 = new Scanner(new File(filename));	
+	    	while (in2.hasNextLine()){
+	    		String ref = in2.nextLine();
+	    		if (okay != 0 && okay != rows + 1){
+	    			for (int i = 0; i < cols; i++){
+	    				charmap[okay-1][i] = ref.charAt(i);
+	    			}
+	    		}
+	    		okay++;
+	    	}
+	    	//System.out.println(toString(charmap));
+	    	for (int x = 0; x < charmap.length; x++){
+				for (int y = 0; y< charmap[0].length;y++){
+					char ref = charmap[x][y];
+					if (ref == '.') oldmap[x][y] = 0;
+					else oldmap[x][y] = -1;
+				}
+			}
+			oldmap[irow][icol] = 1;
+			
+			int count = 0;
+			for (int i = 0; i < moves; i++){
+				for (int x = 0; x < rows; x++){
+					for (int y = 0;y <cols;y++){
+						
+
+								int[][] moveary = {{0,1},{0,-1},{1,0},{-1,0}};
+
+								for (int[] move : moveary){
+									int potx = x + move[0];
+									int poty = y + move[1];
+									if (isValid(potx,poty,rows,cols)){
+										if (oldmap[potx][poty] == -1) newmap[potx][poty] = -1;
+										else newmap[x][y] += oldmap[potx][poty];
+										//if (count < 25) System.out.println(toString(oldmap));
+										//count++;
+									}
+
+								}
+							
+
+						
+
+					}
+				}
+				oldmap = newmap;
+				newmap = new int[rows][cols];
+
+			}
+
+
+			
+	    	return oldmap[frow][fcol];
+    	}	
+
+		catch (Exception e){
+			//e.printStackTrace(); 
+			System.out.println("no such file");
+			return -1;
+		}
+
+    }
+
+    public static boolean isValid(int x, int y, int r, int c){
+    	return x >= 0 && y >= 0 && x < r && y < c;
+    }
+/*
+    public static void sum4(int[][] ary, int[][] nary, int x, int y){
+    	int[][] asdf = {{0,1},{0,-1},{1,0},{-1,0}};
+    	for (int[] asd : asdf){
+    		try{
+    			int ref = ary[x][y];
+    			if (ref != -1 && ary[x + asd[0]][y + asd[1]] != -1) nary[x + asd[0]][y + asd[1]] += ref;
+    			if (ary[x + asd[0]][y + asd[1]] == -1) nary[x + asd[0]][y + asd[1]] = -1;
+    		}
+    		catch (Exception e){
+
+    		}
+    	}
+    }
+*/
     public static void main(String[] args){
     	//System.out.println("" + parse("22 45 52",3)[0] + parse("22 45 52",3)[1] + parse("22 45 52",3)[2]);
-    	System.out.println(bronze("makelake.1.in"));
+    	/*int[][] test = {
+    		{1,-1, 0},
+    		{3, 2, 9},
+    		{0, 2, 0}
+    	};
+    	int[][] test2 = {
+    		{0,0,0},{0,0,0},{0,0,0}
+    	};
+    	
+    	for (int x = 0; x < 3; x++){
+    		for (int y = 0; y < 3; y++){
+    			sum4(test,test2,x,y);
+    		}
+    	}
+    	*/
+    	//sum4(test,test2,1,1);
+    	//System.out.println(toString(test2));
+    	System.out.println(silver("ctravel/ctravel.1.in"));
     }
 }
