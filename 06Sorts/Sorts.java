@@ -2,25 +2,24 @@ import java.util.*;
 public class Sorts{
 
 	public static void main(String[] ary){
-		int[] data = {6,5,4,3,2,1,0};
+		int[] data = {5,3,7,5,34,3,765};
 
-		System.out.println(partition(data, 0, 6));
+		System.out.println(partition(data, 0, data.length-1));
 
 	}
 
 	public static int partition (int[] data, int start, int end){
 		int piv = data[start + (int) (Math.random() * (end - start))];
+		int wall = 0;
 		while (start != end){
-			System.out.println("pivot " + piv);
-			if (data[start] >= piv){
-				if (data[end] < piv){
-					swap(data,start,end);
-					start++;
-				}
-				end--;
+			System.out.println("pivot: " + piv);
+			if (data[start] <= piv){
+				swap(data, start, wall);
+				wall++; start++;
 			}
 			else{
-				start++;
+				swap(data, end, wall);
+				end--;
 			}
 			System.out.println(Arrays.toString(data));
 			System.out.println("\n");
