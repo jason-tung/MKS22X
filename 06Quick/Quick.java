@@ -1,5 +1,5 @@
 import java.util.*;
-public class Sorts{
+public class Quick{
 
 	public static void main(String[] ary){
 		int[] data = {5,3,7,6,34,3,765,865,23,567};
