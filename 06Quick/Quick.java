@@ -2,33 +2,63 @@ import java.util.*;
 public class Quick{
 
 	public static void main(String[] ary){
-		int[] data = {5,3,7,6,34,3,765,865,23,567};
+		int[] data = {2, 8, 4, 6, 10, 0};
 
-		System.out.println(partition(data, 0, data.length-1));
+		quicksort(data);
+
+	System.out.println(Arrays.toString(data));
 
 	}
 
 	public static int partition (int[] data, int start, int end){
-		int pivot = start + (int) (Math.random() * (end - start));
-		int piv = data[pivot];
-		while (start != end){
-			System.out.println(data[start] + " " + data[end]);
-			System.out.println("pivot: " + piv);
-			if (data[start] >= piv){
+		int pindex = start + (int) (Math.random() * (end - start));
+		int pivot = data[pindex];
+		int realStart = start;
+
+		//System.out.println(pivot);
+
+		swap(data, pindex, start);
+		start++;
+
+		while(start <= end){
+			//System.out.println (pivot);
+	    	//System.out.println (Arrays.toString(data));
+			if (data[start] < pivot) start++;
+			else{
 				swap(data, start, end);
 				end--;
 			}
-			else{
-				start++;
-
-			}
-			System.out.println(Arrays.toString(data));
-			System.out.println("\n");
 		}
+		swap(data, realStart, end);
+		//System.out.println(Arrays.toString(data));
 
-		return start;
+		return end;
+		
 
 	}
+
+	public static int quickselect(int[] data, int n){
+		int start = 0;
+		int end = data.length-1;
+		int ans = partition(data, start, end);
+		while (ans != n){
+			ans = partition(data, ans + 1, end);
+			if (ans > n) ans = partition(data, start, ans - 1);
+		}
+		return data[ans];
+	}
+
+	public static void quicksort(int[] data){
+		quicksort(data, 0, data.length-1);
+	}
+
+	public static void quicksort(int[] data, int start, int end){
+		if (start != end){
+		int dog = partition(data, start, end);
+		
+			partition(data, start, dog - 1);
+		 	partition(data, dog + 1, end);
+	}}
 
 	
 
