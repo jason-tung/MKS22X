@@ -10,42 +10,49 @@ public class Quick{
 
 	}
 
-	public static int partition (int[] data, int start, int end){
+	public static int[] partition (int[] data, int start, int end){
 		int pindex = start + (int) (Math.random() * (end - start));
 		int pivot = data[pindex];
-		int realStart = start;
+	        int lo = start;
+		int hi = end;
+		int lt = start;
+		int i = start;
+		int gt = end;
 
-		//System.out.println(pivot);
-
-		swap(data, pindex, start);
-		start++;
-
-		while(start <= end){
-			//System.out.println (pivot);
-	    	//System.out.println (Arrays.toString(data));
-			if (data[start] < pivot) start++;
-			else{
-				swap(data, start, end);
-				end--;
-			}
+		while (gt >= i){
+		    if(data[i] == pivot){
+			i++;
+		    }
+		    else if (data[i] > pivot){
+			swap(data,i, gt);
+			gt--;
+		    }
+		    else{
+			swap(data,i,lt);
+			lt++;
+			i++;
+		    }
 		}
-		swap(data, realStart, end);
-		//System.out.println(Arrays.toString(data));
-
-		return end;
+		int[] a = {lt, i};
+		return a;
 		
-
 	}
 
 	public static int quickselect(int[] data, int n){
 		int start = 0;
 		int end = data.length-1;
-		int ans = partition(data, start, end);
-		while (ans != n){
-			ans = partition(data, ans + 1, end);
-			if (ans > n) ans = partition(data, start, ans - 1);
+		int[] ans = partition(data, start, end);
+		int lowbound = ans[0];
+		int upbound = ans[1];
+		while (n < lowbound && n >= upbound){
+		    ans = partition(data, start, lt);
+		    lowbound = ans[0];
+		    upbound = ans[1];
+		    lowbound = partition(data,start,end)[0];
+		    upbound = 
+			if (ans > n) ans = partition(data,start,end)[1];
 		}
-		return data[ans];
+		return data[lowbound];
 	}
 
 	public static void quicksort(int[] data){
@@ -58,7 +65,8 @@ public class Quick{
 		
 			partition(data, start, dog - 1);
 		 	partition(data, dog + 1, end);
-	}}
+		}
+	}
 
 	
 
