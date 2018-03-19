@@ -2,7 +2,7 @@ import java.util.*;
 public class Quick{
 
 	public static void main(String[] ary){
-		int[] data = {2, 0, 0, 0, 8, 4, 4 ,6,6,6,6, 6, 10, 0};
+		int[] data = {4, -10, 18, 6, 16, -8, 3, -1, 9, -12};
 
 		
 
@@ -39,14 +39,14 @@ public class Quick{
 	}
 
 	public static int quickselect(int[] data, int n){
-		n--;
+		//n--;
 		int start = 0;
 		int end = data.length-1;
 		int[] ans = partition(data, start, end);
 		int lowbound = ans[0];
 		int upbound = ans[1];
-		System.out.println(Arrays.toString(data));
-		System.out.println(Arrays.toString(ans));
+		//System.out.println(Arrays.toString(data));
+		//System.out.println(Arrays.toString(ans));
 		while (!(n>= lowbound && n < upbound)){
 			if (n < lowbound){
 				end = lowbound - 1;
@@ -57,7 +57,7 @@ public class Quick{
 		    ans = partition(data, start, end);
 			lowbound = ans[0];
 		    upbound = ans[1];
-		    System.out.println(Arrays.toString(ans));
+		    //System.out.println(Arrays.toString(ans));
 		}
 		
 		return data[lowbound];
