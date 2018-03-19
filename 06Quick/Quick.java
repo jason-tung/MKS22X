@@ -2,11 +2,11 @@ import java.util.*;
 public class Quick{
 
 	public static void main(String[] ary){
-		int[] data = {2, 8, 4, 6, 10, 0};
+		int[] data = {2, 0, 0, 0, 8, 4, 4 ,6,6,6,6, 6, 10, 0};
 
-		quicksort(data);
+		
 
-	System.out.println(Arrays.toString(data));
+	quicksort(data);
 
 	}
 
@@ -39,19 +39,27 @@ public class Quick{
 	}
 
 	public static int quickselect(int[] data, int n){
+		n--;
 		int start = 0;
 		int end = data.length-1;
 		int[] ans = partition(data, start, end);
 		int lowbound = ans[0];
 		int upbound = ans[1];
-		while (n < lowbound && n >= upbound){
-		    ans = partition(data, start, lt);
-		    lowbound = ans[0];
+		System.out.println(Arrays.toString(data));
+		System.out.println(Arrays.toString(ans));
+		while (!(n>= lowbound && n < upbound)){
+			if (n < lowbound){
+				end = lowbound - 1;
+			}
+			else{
+				start = upbound;
+			}
+		    ans = partition(data, start, end);
+			lowbound = ans[0];
 		    upbound = ans[1];
-		    lowbound = partition(data,start,end)[0];
-		    upbound = 
-			if (ans > n) ans = partition(data,start,end)[1];
+		    System.out.println(Arrays.toString(ans));
 		}
+		
 		return data[lowbound];
 	}
 
@@ -60,11 +68,13 @@ public class Quick{
 	}
 
 	public static void quicksort(int[] data, int start, int end){
-		if (start != end){
-		int dog = partition(data, start, end);
-		
-			partition(data, start, dog - 1);
-		 	partition(data, dog + 1, end);
+		if (start < end){
+			//System.out.println("passed");
+			int[] ans = partition(data, start, end);
+			//System.out.println(Arrays.toString(data));
+			//System.out.println(Arrays.toString(ans));
+			quicksort(data, start, ans[0] - 1);
+			quicksort(data, ans[1], end);
 		}
 	}
 
