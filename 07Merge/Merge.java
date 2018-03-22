@@ -18,7 +18,12 @@ public class Merge{
 	}
     }
 
-    public static 
+    public static void merge(int[] data){
+	int[] temp = new int[data.length];
+	merge(data, temp, 0, data.length-1);
+    }
+
+    public static void merge
 
     public static void main (String[] args){
 	int[] a = {5,4,3,6,2,1,7,3,6,8};

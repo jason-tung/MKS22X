@@ -6,7 +6,7 @@ public class KnightBoard{
 
 	KnightBoard dog = new KnightBoard(Integer.parseInt(dogs[0]), Integer.parseInt(dogs[1]));
 	System.out.println(dog.solve(0,0));
-	System.out.println(dog);
+	//System.out.println(dog);
 
     }
     
@@ -175,7 +175,8 @@ public class KnightBoard{
     
 
     public void diagram(int r, int c){
-	 for (int kittens[]: cat){
+
+	for (int kittens[]: cat){
 		int potr = r + kittens[0];
 		int potc = c + kittens[1];
 		if (potr >= 0 && potr < rowsize && potc >= 0 && potc < colsize && board[potr][potc] == 0){
