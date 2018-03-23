@@ -9,7 +9,7 @@ public class Merge{
 		    ///System.out.println(temp[start1]);
 		    //System.out.println(temp[start2]);
 		    //System.out.println("\n");
-		    if (start1 <= end1  && ( start2 > end2 || temp[start1] >= temp[start2] )){
+		    if (start1 <= end1  && ( start2 > end2 || temp[start1] <= temp[start2] )){
 				data[i] = temp[start1];
 				start1++;
 		    }
