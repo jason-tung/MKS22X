@@ -54,22 +54,24 @@ public class Driver{
     }
 
     public static void main(String[]args){
-	if(args.length < 2)return;
-    
-	int size =  Integer.parseInt(args[0]);
-	int type =   Integer.parseInt(args[1]);
+		int size = 1000000;
 
-	int [] start = makeArray(size,type);
-	int [] result = Arrays.copyOf(start,start.length);
-	Arrays.sort(result);
-    
-	long startTime = System.currentTimeMillis();
-        Quick.quicksort(start);
-	long elapsedTime = System.currentTimeMillis() - startTime;
-	if(Arrays.equals(start,result)){
-	    System.out.println("PASS Case "+name(type)+" array, size:"+size+" "+elapsedTime/1000.0+"sec ");
-	}else{
-	    System.out.println("FAIL ! ERROR ! "+name(type)+" array, size:"+size+"  ERROR!");
+		for (int type = 0; type <= 4; type++){
+
+			int [] start = makeArray(size,type);
+			int [] result = Arrays.copyOf(start,start.length);
+			Arrays.sort(result);
+		    
+			long startTime = System.currentTimeMillis();
+			Quick.quicksort(start);
+			long elapsedTime = System.currentTimeMillis() - startTime;
+			// /System.out.print(Arrays.toString(start));
+			if(Arrays.equals(start,result)){
+			    System.out.println("PASS Case "+name(type)+" array, size:"+size+" "+elapsedTime/1000.0+"sec ");
+			}
+			else{
+			    System.out.println("FAIL ! ERROR ! "+name(type)+" array, size:"+size+"  ERROR!");
+			}
+	    }
 	}
-    }
 }
