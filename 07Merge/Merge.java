@@ -44,7 +44,7 @@ public class Merge{
 
     public static void main (String[] args){
     	
-		int[] a = {5,4,3,6,2,1,7,3,6,8,9};
+	int[] a = {9,8,7,6,5,4,3,2,1,0};
 		/*
 		int[] b = new int[a.length];
 		merge(b, a, 0, 2,3, 5);
@@ -52,7 +52,29 @@ public class Merge{
 		System.out.print(Arrays.toString(b));
 		System.out.println("\n");
 		*/
-		mergesort(a);
+	        insertionsort(a, 0, a.length - 1);
 		System.out.println(Arrays.toString(a));
+    }
+
+    public static void insertionsort(int[] data, int low, int high){
+	for(int dog = low + 1; dog <= high; dog++){
+	    //System.out.println(Arrays.toString(data));
+	    int temp = dog;
+	    //System.out.println(dog + " " + temp);
+	    while(temp - 1 >= low && data[dog] < data[temp - 1]){
+		//System.out.println(data[temp - 1] + " " + data[temp]);
+		temp--;		
+		
+	    }
+	    if (temp != dog){
+		swap(data, temp, dog);
+	    }
+	}
+    }
+	    
+    public static void swap(int[] ary, int a, int b){
+	int dog = ary[a];
+	ary[a] = ary[b];
+	ary[b] = dog;
     }
 }
