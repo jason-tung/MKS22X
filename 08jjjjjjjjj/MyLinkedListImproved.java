@@ -9,8 +9,14 @@ public class MyLinkedList{
 		if (print) System.out.println(a);
     }
 
+    public MyLinkedList(){
+    	first = null;
+    	last = null;
+    	size = 0;
+    }
+
     private Node getNode(int index){
-	if (index >= size || index < 0) throw new IndexOutOfBoundsException();
+	if (index >= size && index >= 0) throw new IndexOutOfBoundsException();
 	Node current = first;
 	for (int i = 0; i < index; i++) current = current.getNext();
 	return current;
@@ -27,28 +33,17 @@ public class MyLinkedList{
     }
 
     public Integer get(int index){
-	if (index >= size || index < 0) throw new IndexOutOfBoundsException();
 	return getNode(index).getValue();
     }
 
     public Integer set(int index, Integer value){
-	if (index >= size || index < 0) throw new IndexOutOfBoundsException();
 	Node kevin = getNode(index);
 	kevin.setValue(value);
 	return kevin.getValue();
     }
 
-    public int indexOf(Integer val){
-	Node current = first;
-	for (int i = 0; i <= size; i++){
-	    if (current.getValue() == val) return i;
-	    if (i < size - 1) current = current.getNext();
-	}
-	return -1;
-	
-    }
-
     public boolean add(Integer value){
+    	//if (value < 0) throw new IndexOutOfBoundsException();
     	if (size == 0){
     		first = new Node(value);
 		last = first;
@@ -62,16 +57,6 @@ public class MyLinkedList{
 	//	System.out.println(newNode.getPrev() + " "+ newNode + " "  + newNode.getNext() + " " + value);
 	size++;
     	return true;
-    }
-
-    public void add(int index, Integer value){
-	if (index >= size || index < 0) throw new IndexOutOfBoundsException();
-	if (index = size - 1){
-	    add(value);
-	    return;
-	}
-	Node newNode = new Node(value);
-	
     }
 
     public String toString(){
@@ -88,12 +73,9 @@ public class MyLinkedList{
     public static void main(String[] args){
 	MyLinkedList kevin = new MyLinkedList();
 	for (int i = 0; i < 10; i++){
-	    kevin.add(i * 2);
+	    kevin.add(i);
 	}
 	print(kevin);
-	print(kevin.indexOf(0));
-	print(kevin.indexOf(8));
-	print(kevin.indexOf(-2));
     }
     
 
