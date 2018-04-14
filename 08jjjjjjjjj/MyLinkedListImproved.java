@@ -6,7 +6,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     private Node first,last;
     private int size;
 
-    public static boolean print = false;
+    public static boolean print = true;
 
     public static void print(Object a){
 		if (print) System.out.println(a);
@@ -169,10 +169,31 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
       }
       return biggestKevinIndex;
     }
-    
+
+    public void extend(MyLinkedListImproved<T> other){
+	last.setNext(other.first);
+	other.first.setPrev(last);
+	last = other.last;
+	size+=other.size;
+	other.clear();
+    }
     
     public static void main(String[] args){
-        crystalDriver();
+        //crystalDriver();
+
+	MyLinkedListImproved<Integer> kevin = new MyLinkedListImproved<>();
+
+	MyLinkedListImproved<Integer> wesley = new MyLinkedListImproved<>();
+
+	for (int i = 0; i < 10; i++){
+	    kevin.add(i*10);
+	    wesley.add(i*10 + 100);
+	}
+
+	kevin.extend(wesley);
+	print("testset");
+	print(kevin);
+		
       /*
       MyLinkedListImproved<Integer> kevin = new MyLinkedListImproved<>();
       for (int i = 0; i < 10; i++){
@@ -534,7 +555,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     }
     */
     
-    class Node{
+     class Node{
   		private Node next,prev;
   		private T value;
 
