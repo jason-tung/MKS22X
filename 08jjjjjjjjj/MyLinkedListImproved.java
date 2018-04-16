@@ -170,13 +170,21 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
       return biggestKevinIndex;
     }
 
-    public void extend(MyLinkedListImproved<T> other){
-	last.setNext(other.first);
-	other.first.setPrev(last);
-	last = other.last;
-	size+=other.size;
-	other.clear();
+  public void extend(MyLinkedListImproved<T> other){
+    if (other.size() == 0) return;
+    if (this.size() == 0){
+      first = other.first;
+      last = other.last;
     }
+  	else{
+      last.setNext(other.first);
+    	other.first.setPrev(last);
+    	last = other.last;
+    	
+    }
+    size+=other.size;
+      other.clear();
+  }
     
     public static void main(String[] args){
         //crystalDriver();
@@ -189,7 +197,8 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    kevin.add(i*10);
 	    wesley.add(i*10 + 100);
 	}
-
+  print(wesley.max());
+  print(wesley.min());
 	kevin.extend(wesley);
 	print("testset");
 	print(kevin);

@@ -1,6 +1,12 @@
 import java.util.*;
 @SuppressWarnings("unchecked")
 public class Sorts{
+	public static boolean print = true;
+
+    public static void print(Object a){
+		if (print) System.out.println(a);
+    }
+
     public static void radixsort(MyLinkedListImproved<Integer> data){
 		if (data.size() <= 0) return;
 	    MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
@@ -18,8 +24,9 @@ public class Sorts{
 		    }
 		}
 		data.clear();
-		minisort(pos);
-		minisort(neg);
+		minisort(pos, buckets);
+		minisort(neg, buckets);
+
 		for (Integer posints : pos){
 			data.add(posints);
 		}
@@ -28,24 +35,71 @@ public class Sorts{
 		}
 
     }
-    public static void minisort(MyLinkedListImproved<Integer> part){
-	    	if (data.size() <= 0) return;
+    public static void minisort(MyLinkedListImproved<Integer> part, MyLinkedListImproved<Integer>[] buckets){
+	    	if (part.size() <= 0) return;
 	    	for (MyLinkedListImproved wah : buckets){
 	    		wah.clear();
 	    	}
-	    	int maxlen = (int) math.floor(math.log10(part.max()));
+	    	//print(part);
+	    	//print(part.max());
+	    	//print(part.get(part.max()));
+	    	int maxlen = (int) Math.ceil(Math.log10(part.get(part.max())));
+	    	//print(maxlen);
 	    	for (int i = 0; i < maxlen; i++){
+	    		print("-------------------");
 	    		for (Integer waaah : part){
-	    			int holder = (int) ((waaah / math.pow(10, i)) % 10);
+	    			int holder = (int) ((waaah / Math.pow(10, i)) % 10);
+	    			//print(waaah);
+	    			//print(holder);
 	    			buckets[holder].add(waaah);
+	    			
 	    		}
+	    		print("----------");
+	    		for (MyLinkedListImproved x : buckets) print(x);
+	    			print("----------");
+	    		//for (MyLinkedListImproved x : buckets) print(x);
+	    			//print("-------");
 	    		part.clear();
+
 	    		for (MyLinkedListImproved bucket : buckets){
+	    			//System.out.println(part == null);
+	    			//System.out.println(bucket);
+	    			
+	    			print(bucket);
 	    			part.extend(bucket);
+	    			print(part);
+	    			//print(bucket);
+	    			//print(part);
 	    			bucket.clear();
 	    		}
+	    		print("-------------------");
 	    	}
-    	}
+	    	//for (MyLinkedListImproved x : buckets) print(x);
+	    		print("--------");
+	    		print (buckets.length);
+	    	print(part);
+	    	print("--------");
+    }
+
+      public static void main(String[] args){
+      	MyLinkedListImproved<Integer> kevin = new MyLinkedListImproved<>();
+
+		MyLinkedListImproved<Integer> wesley = new MyLinkedListImproved<>();
+
+		for (int i = 0; i < 10; i++){
+	 	   //kevin.add(i*10);
+	  	  wesley.add((int) ((Math.random() * 100) - 100 * Math.random()));
+		}
+		//wesley.extend(kevin);
+		print(wesley);
+		radixsort(wesley);
+		print(wesley);
+
+
+    
+
+    }
+
 
 
 }
