@@ -1,7 +1,7 @@
 import java.util.*;
 @SuppressWarnings("unchecked")
 public class Sorts{
-	public static boolean print = true;
+	public static boolean print = false;
 
     public static void print(Object a){
 		if (print) System.out.println(a);
@@ -82,6 +82,7 @@ public class Sorts{
     }
 
       public static void main(String[] args){
+      	/*
       	MyLinkedListImproved<Integer> kevin = new MyLinkedListImproved<>();
 
 		MyLinkedListImproved<Integer> wesley = new MyLinkedListImproved<>();
@@ -94,11 +95,10 @@ public class Sorts{
 		print(wesley);
 		radixsort(wesley);
 		print(wesley);
-
-
-    
-
+		*/
     }
+
+
 
 
 
