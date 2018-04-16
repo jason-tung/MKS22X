@@ -6,7 +6,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     private Node first,last;
     private int size;
 
-    public static boolean print = true;
+    public static boolean print = false;
 
     public static void print(Object a){
 		if (print) System.out.println(a);
