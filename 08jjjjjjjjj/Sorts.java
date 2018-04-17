@@ -81,8 +81,14 @@ public class Sorts{
 	    	print("--------");
     }
 
+    public static void radixsortIncludingNegatives(MyLinkedListImproved<Integer> data){ 
+    //either blank method
+   //OR
+   	radixsort(data);
+	}
+
       public static void main(String[] args){
-      	/*
+      	
       	MyLinkedListImproved<Integer> kevin = new MyLinkedListImproved<>();
 
 		MyLinkedListImproved<Integer> wesley = new MyLinkedListImproved<>();
@@ -92,10 +98,18 @@ public class Sorts{
 	  	  wesley.add((int) ((Math.random() * 100) - 100 * Math.random()));
 		}
 		//wesley.extend(kevin);
-		print(wesley);
+		System.out.println(wesley);
 		radixsort(wesley);
-		print(wesley);
-		*/
+		System.out.println(wesley);
+		for (int i = 0; i < 10; i++){
+	 	   //kevin.add(i*10);
+	  	  kevin.add((int) ((Math.random() * 100) - 100 * Math.random()));
+		}
+		//wesley.extend(kevin);
+		System.out.println(kevin);
+		radixsortIncludingNegatives(kevin);
+		System.out.println(kevin);
+		
     }
 
 
