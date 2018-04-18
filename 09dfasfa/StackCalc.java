@@ -1,5 +1,5 @@
 import java.util.*;
-public class Post{
+public class StackCalc{
 	private static boolean print = false;
 	public static void print(Object a){
 		if (print) System.out.println(a);
