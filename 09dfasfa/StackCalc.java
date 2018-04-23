@@ -8,7 +8,7 @@ public class StackCalc{
 		String[] parsed = str.split(" ");
 		LinkedList<Double> dog = new LinkedList<Double>();
 		for (String waaah : parsed){
-			switch (waaah) {
+		    switch (waaah) {
 	            case "+":  dog.push(dog.pop() + dog.pop()); break;
 	            case "-":  Double hol = dog.pop(); dog.push(dog.pop() - hol); break;
 	            case "*":  dog.push(dog.pop() * dog.pop()); break;
