@@ -15,9 +15,9 @@ public class StackCalc{
 	            case "/":  Double aba = dog.pop(); dog.push(dog.pop() / aba); break;
 	            case "%":  Double das = dog.pop(); dog.push(dog.pop() % das); break;
 	            default: dog.push(Double.valueOf(waaah));
-        	}
-        	print(waaah);
-        	print(dog);
+		    }
+		    print(waaah);
+		    print(dog);
 		}
 		return dog.pop();
 	}
