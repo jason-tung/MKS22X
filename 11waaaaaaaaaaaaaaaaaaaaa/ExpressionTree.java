@@ -6,25 +6,17 @@ public class ExpressionTree{
     /* The sample tree would be: "( 3 + (2 * 10))"     */
     public String toString(){
 	/*you are to write this method*/
-	return toString("");
-    }
-    
-    public String toString(String str){
 	if (isValue())return "" + getValue();
 	//return toString("(" + getLeft().toString(str) + " " + getOp() + " " +  getRight().toString(str)+")");
 	//System.out.println(getOp() + " " + getLeft().getValue() + " " + getRight().getValue());
-	return toString("(" + getLeft().toString(str) + getOp() + getRight().toString(str)+ ")" );
+	return "(" +  getLeft().toString() + " " + getOp() + " " + getRight().toString() + ")";
     }
   
     /*return the expression as a postfix notation string without parenthesis*/
     /* The sample tree would be: "3 2 10 * +"     */
     public String toStringPostfix(){
-	/*you are to write this method*/
-        return ToStringPostfix(""); 
-    }
-    public String ToStringPostfix(String str){
 	if (isValue()) return "" + getValue();
-	return ToStringPostfix(getLeft().ToStringPostfix(str) + getRight().ToStringPostfix(str)+ getOp());
+	return getLeft().toStringPostfix() + " " + getRight().toStringPostfix() + " " + getOp();
     }
   
     /*return the expression as a prefix notation string without parenthesis*/
@@ -32,11 +24,8 @@ public class ExpressionTree{
   
     public String toStringPrefix(){
 	/*you are to write this method*/
-        return ToStringPrefix("");
-    }
-    public String ToStringPrefix(String str){
 	if (isValue()) return "" + getValue();
-	return ToStringPrefix(getOp() + getLeft().ToStringPrefix(str) + getRight().ToStringPrefix(str));
+       return getOp() + " " + getLeft().toStringPrefix() + " " + getRight().toStringPrefix();
     }
   
   
@@ -52,13 +41,13 @@ public class ExpressionTree{
     private double apply(char op, double a, double b){
 	/*you are to write this method*/
         switch (op){
-	case '+': return a + b; 
-	case '-': return a - b; 
-	case '*': return a * b; 
-	case '/': return a / b; 
-	case '%': return a % b; 
-	default: throw new IllegalArgumentException();
-	}
+			case '+': return a + b; 
+			case '-': return a - b; 
+			case '*': return a * b; 
+			case '/': return a / b; 
+			case '%': return a % b; 
+			default: throw new IllegalArgumentException();
+		}
     }
 
 
