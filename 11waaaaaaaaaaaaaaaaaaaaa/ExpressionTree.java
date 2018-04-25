@@ -20,7 +20,7 @@ public class ExpressionTree{
     /* The sample tree would be: "3 2 10 * +"     */
     public String toStringPostfix(){
 	/*you are to write this method*/
-        return ToStringPostfix("");
+        return ToStringPostfix(""); 
     }
     public String ToStringPostfix(String str){
 	if (isValue()) return "" + getValue();
