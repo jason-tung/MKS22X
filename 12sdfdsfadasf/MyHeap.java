@@ -45,7 +45,7 @@ public class MyHeap{//<T extends Comparable<T>>{
     	return size;
     }
 
-    public void up(int index){
+    public void pushUp(int index){
     	int yeehaw = data[index].compareTo(data[(index-1)/2]);
     	if (typeMax && yeehaw > 0 || !typeMax && yeehaw < 0){
     		swap(index, (index - 1) / 2);
@@ -53,7 +53,7 @@ public class MyHeap{//<T extends Comparable<T>>{
     	}  
     }
 
-    public void down(int index){
+    public void pushDown(int index){
     	int left = index * 2 + 1;
     	int right = left + 1;
     	if (typeMax){
@@ -115,36 +115,7 @@ public class MyHeap{//<T extends Comparable<T>>{
 
 
 
-public static void main(String[] args) {
-    MyHeap a = new MyHeap(false);
-    String[] b = new String[26];
-    for(int i = 0; i < 26; i++){
-      int temp = 97 - i + 25;
-      char value = (char)temp;
-      a.add("" + value);
-      b[i] = "" + value;
-    }
 
-    Arrays.sort(b);
-
-    System.out.println("MyHeap: " + a);
-    System.out.println("Arrays: "+ Arrays.toString(b));
-
-    for(int i = 0; i < 26; i++){
-      //System.out.println("size: " + a.size());
-      //System.out.println("heap before: " + a.toString());
-      String temp = a.remove();
-      if(!(temp.equals(b[i]))){
-        System.out.println("there is an error");
-        System.out.println(temp);
-        System.out.println(b[i]);
-        System.out.println(a);
-      }
-      System.out.println(temp);
-      System.out.println(a);
-    }
-
-  }
 
 
 }
