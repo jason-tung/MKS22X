@@ -1,55 +1,60 @@
 import java.util.*;
 
-public class MyHeap{//<T extends Comparable<T>>{
+public class MyHeap <T extends Comparable <T>>{//<T extends Comparable<T>>{
 
 //resize swap up down
-	public static boolean print = false;
+    public static boolean print = false;
 
     public static void print(Object a){
         if (print) System.out.println(a);
     }
 
     private int size;
-    private String[] data;
+    private T[] data;
     private boolean typeMax;
 
     public MyHeap(){
     	this(true);
     }
 
+     @SuppressWarnings("unchecked")
     public MyHeap(boolean wdog){
     	typeMax = wdog;
-    	data = new String[10];
+    	data = (T[])new Comparable[10];
     	//data = (T[]) new Comparable[10];
         size = 0;
     }
 
-    public void add(String s){
+     @SuppressWarnings("unchecked")
+     
+
+    public void add(T s){
     	if (size == data.length) resize();
     	data[size] = s;
-    	up(size);
+    	pushUp(size);
     	size++;
     }
 
-    public String remove(){
+    public T remove(){
     	swap(0, size - 1);
     	size--;
-    	down(0);
+    	pushDown(0);
     	return data[size];
     }
 
-    public String peek(){
+    public T peek(){
     	return data[0];
     }
     public int size(){
     	return size;
+	
     }
 
     public void pushUp(int index){
     	int yeehaw = data[index].compareTo(data[(index-1)/2]);
     	if (typeMax && yeehaw > 0 || !typeMax && yeehaw < 0){
     		swap(index, (index - 1) / 2);
-    		up((index - 1) / 2);
+    		pushUp((index - 1) / 2);
     	}  
     }
 
@@ -59,21 +64,21 @@ public class MyHeap{//<T extends Comparable<T>>{
     	if (typeMax){
     		if (inBounds(left) && lessThan(index,left,data) && (!inBounds(right) || greaterThan(left,right,data))){
     			swap(index, left);
-    			down(left);
+    			pushDown(left);
     		}
     		else if(inBounds(right) && lessThan(index,right,data) && (!inBounds(left) || greaterThan(right,left,data))){
     			swap(index, right);
-    			down(right);
+    			pushDown(right);
     		}
     	}
     	else{
     		if (inBounds(left) && greaterThan(index,left,data) && (!inBounds(right) || lessThan(left,right,data))){
     			swap(index, left);
-    			down(left);
+    			pushDown(left);
     		}
     		else if(inBounds(right) && greaterThan(index,right,data) && (!inBounds(left) || lessThan(right,left,data))){
     			swap(index, right);
-    			down(right);
+    			pushDown(right);
     		}
     	}
 
@@ -83,16 +88,17 @@ public class MyHeap{//<T extends Comparable<T>>{
     	return index < size;
     }
 
-    public boolean greaterThan(int a, int b, String[] data){
+    public boolean greaterThan(int a, int b, T[] data){
     	return data[a].compareTo(data[b]) > 0;
     }
 
-    public boolean lessThan(int a, int b, String[] data){
+    public boolean lessThan(int a, int b, T[] data){
     	return data[a].compareTo(data[b]) < 0;
     }
 
+     @SuppressWarnings("unchecked")
     public void resize(){
-        String[] asdf = new String[2 * size];
+        T[] asdf = (T[]) new Comparable[2 * size];
 		for (int i = 0; i < size; i++){
 	    	asdf[i] = data[i];
 		}
@@ -100,7 +106,7 @@ public class MyHeap{//<T extends Comparable<T>>{
     }
 
     public void swap (int a, int b){
-		String qqq = data[a];
+		T qqq = data[a];
 		data[a] = data[b];
 		data[b] = qqq;
     }
@@ -114,7 +120,13 @@ public class MyHeap{//<T extends Comparable<T>>{
     }
 
 
-
+    public static void main(String[] args){
+	MyHeap kevin = new MyHeap();
+	for (int i = 0; i < 10; i++){
+	    kevin.add(i);
+	    print(kevin);
+	}
+    }
 
 
 
