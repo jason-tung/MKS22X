@@ -26,10 +26,17 @@ class Location{
     public String toString(){
 	return "x: " + x + " y: " + y + " prev: " + Boolean.toString(previous != null);
     }
+    public boolean equals(Location other){
+      return other.x == x && other.y == y;
+    }
 }
 
 class FrontierQueue implements Frontier{
-    public Deque<Location> locations;
+    public ArrayDeque<Location> locations;
+
+    public FrontierQueue(){
+  locations = new ArrayDeque<Location>();
+    }
 
     public Location next(){
 	return locations.removeLast();
@@ -45,7 +52,11 @@ class FrontierQueue implements Frontier{
 }
 
 class FrontierStack implements Frontier{
-    public Deque<Location> locations;
+    public ArrayDeque<Location> locations;
+
+      public FrontierStack(){
+  locations = new ArrayDeque<Location>();
+    }
 
     public Location next(){
 	return locations.removeFirst();
@@ -64,7 +75,7 @@ class FrontierStack implements Frontier{
 
 class Maze{
   private Location start,end;
-  private char[][] maze;
+  public char[][] maze;
 
    public Maze(String filename) throws FileNotFoundException, IllegalStateException{
         Scanner dogs = new Scanner(new File(filename));
@@ -118,7 +129,7 @@ class Maze{
 	    for(int c = 0; c < maze[0].length; c++){
 	    	if (maze[r][c] == '@') str += "\033[32m@\033[m";
 		else if (maze[r][c] == '#') str += "\033[35m#\033[m";
-		else if (maze[r][c] == '?') str += "\033[35m?\033[m";
+		else if (maze[r][c] == '?') str += "\033[34m?\033[m";
 		else if (maze[r][c] == '.') str += "\033[31m.\033[m";
 		else str += "\033[36m" + maze[r][c] + "\033[m";
 		if (c == maze[0].length-1){
@@ -143,7 +154,10 @@ class Maze{
       int currentY = n.getY();
       ArrayList<Location> temp = new ArrayList<>();
       for (int[] mod:mods){
-	  temp.add(new Location(currentX+mod[0], currentY + mod[1], n));
+        int tempx = currentX + mod[0];
+        int tempy = currentY + mod[1];
+        if (tempx >= 0 && tempy >= 0 && tempx < maze[0].length && tempy < maze.length && (maze[tempy][tempx] == ' ' || maze[tempy][tempx] == 'E' || maze[tempy][tempx] == 'S'))
+	       temp.add(new Location(tempx,tempy,n));
       }
       Location[] neighbors = new Location[temp.size()];
       for (int i = 0; i < neighbors.length; i++){
@@ -178,7 +192,50 @@ public class MazeSolver{
   //mode: required to allow for alternate solve modes.
   //0: BFS
   //1: DFS
+  private void wait(int millis){
+         try {
+             Thread.sleep(millis);
+         }
+         catch (InterruptedException e) {
+         }
+     }
+      public void clearTerminal(){
+        System.out.println("\033[2J\033[1;1H");
+    }
+
+
+  public static boolean animate = true;
   public boolean solve(int mode){
+    
+
+
+    if (mode == 0){
+      frontier = new FrontierQueue();
+    }
+    else{
+      frontier = new FrontierStack();
+    }
+    //System.out.println(maze.getStart());
+    frontier.add(maze.getStart());
+    while(frontier.hasNext()){
+      //****************************************************************************************************
+      if(animate){
+            clearTerminal();
+            //System.out.println("now checking: " + row + "," + col + " level: " + lvl);
+            System.out.println(this);
+
+            wait(20);
+        }
+        //*****************************************************************************************************
+      Location temp = frontier.next();
+      if (temp.equals(maze.getEnd())) return true;
+      if (maze.maze[temp.getY()][temp.getX()] != 's') maze.maze[temp.getY()][temp.getX()] = '.';
+      for (Location neighbor: maze.getNeighbors(temp)){
+        if (neighbor.equals(maze.getEnd())) return true;
+        frontier.add(neighbor);
+        maze.maze[neighbor.getY()][neighbor.getX()] = '?';
+      }
+    }
     //initialize your frontier
     //while there is stuff in the frontier:
     //  get the next location
@@ -189,16 +246,23 @@ public class MazeSolver{
     return false;
   }
 
+  /*private void replace(Location loc, char c){
+    maze[loc.getY()][loc.getX()] = c;
+  }*/
+
   public String toString(){
     return maze.toString();
   }
 
     public static void main(String[] args){
 	try{
-	    MazeSolver kevin = new MazeSolver("data1.dat");
+	    MazeSolver kevin = new MazeSolver("data3.dat");
 	    System.out.println(kevin);
 	    System.out.println(kevin.maze.getStart());
 	    System.out.println(kevin.maze.getEnd());
+      System.out.println(Arrays.deepToString(kevin.maze.getNeighbors(new Location(1,5,null))));
+      System.out.println(kevin.solve(0));
+      System.out.println(kevin);
 	}
 	catch (FileNotFoundException e){
 	}
