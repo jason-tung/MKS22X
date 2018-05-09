@@ -204,7 +204,7 @@ public class MazeSolver{
     }
 
 
-  public static boolean animate = true;
+  public static boolean animate = false;
   public boolean solve(int mode){
     
 
