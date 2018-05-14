@@ -32,8 +32,8 @@ public class RunningMedian{
     public static void main(String[] args){
       RunningMedian kevin = new RunningMedian();
       ArrayList<Double> wesley = new ArrayList<>();
-      //double[] list = {2,4,6,2,7,2,4,6,3.2,76.46,83.2,7.2};
-      double[] list = {0,1,2,3,4,5,6,7,8,9,10};
+      double[] list = {2,4,6,2,7,2,4,6,3.2,76.46,83.2,7.2, 3.2, 4.5, 5.5,3.2,6.7};
+      //double[] list = {0,1,2,3,4,5,6,7,8,9,10};
       for (double x: list){
         test(kevin, wesley, x);
       }

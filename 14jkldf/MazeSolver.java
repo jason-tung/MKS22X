@@ -4,14 +4,16 @@ import java.util.*;
 import java.io.*;
 
 
-class Location{
+class Location implements Comparable<Location>{
     private int x,y;
     private Location previous;
+    private int distance;
 
-    public Location(int _x, int _y, Location prev){
+    public Location(int _x, int _y, Location prev, int dist){
 	x = _x;
 	y = _y;
 	previous = prev;
+  distance = dist;
     }
 
     public int getX(){
@@ -25,11 +27,20 @@ class Location{
     public Location getPrevious(){
 	return previous;
     }
+
+    public int getDistance(){
+      return distance;
+    }
+    
     public String toString(){
-	return "x: " + x + " y: " + y + " prev: " + Boolean.toString(previous != null);
+	return "x: " + x + " y: " + y + " prev: " + Boolean.toString(previous != null) + " distance: " + distance;
     }
     public boolean equals(Location other){
       return other.x == x && other.y == y;
+    }
+
+    public int compareTo(Location other){
+      return distance -  other.distance;
     }
 }
 
@@ -73,6 +84,24 @@ class FrontierStack implements Frontier{
     }
 }
 
+class FrontierPriorityQueue implements Frontier{
+    private MyHeap<Location> locations;
+
+    public FrontierPriorityQueue(){
+      locations = new MyHeap<Location>(false);
+    }
+    public Location next(){
+  return locations.remove();
+    }
+
+    public void add(Location n){
+  locations.add(n);
+    }
+
+    public boolean hasNext(){
+  return locations.peek() != null;
+    }
+}   
 //"--------------------------------------------------------------------------";
 
 class Maze{
@@ -103,11 +132,11 @@ class Maze{
 			maze[r][c] = line.charAt(c);
 			if (maze[r][c] == 'S'){
 			    nums++;
-			    start = new Location(c,r,null);
+			    start = new Location(c,r,null, 0);
 			}
 			if (maze[r][c] == 'E'){
 			    nume++;
-			    end = new Location(c,r,null);
+			    end = new Location(c,r,null, 0);
 			}
 	    }   
 	    r++;
@@ -125,6 +154,9 @@ class Maze{
   // 'E' - end space (do not replace this)
   // '@' - part of solution
   // 'S' - starting space (do not replace this)
+    public static int getDistance(int x, int y,Location other){
+      return Math.abs(x-other.getX())+Math.abs(y-other.getY());
+    }
     public String toString(){
 	String str = "";
 	for(int r = 0; r < maze.length; r++){
@@ -159,7 +191,7 @@ class Maze{
         int tempx = currentX + mod[0];
         int tempy = currentY + mod[1];
         if (tempx >= 0 && tempy >= 0 && tempx < maze[0].length && tempy < maze.length && (maze[tempy][tempx] == ' ' || maze[tempy][tempx] == 'E' || maze[tempy][tempx] == 'S'))
-	       temp.add(new Location(tempx,tempy,n));
+	       temp.add(new Location(tempx,tempy,n, getDistance(tempx, tempy, end)));
       }
       Location[] neighbors = new Location[temp.size()];
       for (int i = 0; i < neighbors.length; i++){
@@ -208,14 +240,14 @@ public class MazeSolver{
 
   public static boolean animate = false;
   public boolean solve(int mode){
-    
-
-
-    if (mode == 0){
+   if (mode == 0){
       frontier = new FrontierQueue();
     }
-    else{
+    else if( mode == 1){
       frontier = new FrontierStack();
+    }
+    else{
+      frontier = new FrontierPriorityQueue();
     }
     //System.out.println(maze.getStart());
     frontier.add(maze.getStart());
@@ -258,12 +290,12 @@ public class MazeSolver{
 
     public static void main(String[] args){
 	try{
-	    MazeSolver kevin = new MazeSolver("data3.dat");
+	    MazeSolver kevin = new MazeSolver("data4.dat");
 	    System.out.println(kevin);
 	    System.out.println(kevin.maze.getStart());
 	    System.out.println(kevin.maze.getEnd());
-      System.out.println(Arrays.deepToString(kevin.maze.getNeighbors(new Location(1,5,null))));
-      System.out.println(kevin.solve(0));
+      System.out.println(Arrays.deepToString(kevin.maze.getNeighbors(new Location(1,5,null, 0))));
+      System.out.println(kevin.solve(3));
       System.out.println(kevin);
 	}
 	catch (FileNotFoundException e){
