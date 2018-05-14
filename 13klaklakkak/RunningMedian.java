@@ -10,15 +10,17 @@ public class RunningMedian{
     }
 
     public void add(Double a){
-	if (smallHeap.size() <= bigHeap.size()){
-	    smallHeap.add(a);
-	}
-	else{
-	    bigHeap.add(a);
-	}
-	//if (smallHeap.size() - bigHeap.size() > 1) bigHeap.add(smallHeap.remove());
-	//else if (smallHeap.size() - bigHeap.size() < -1) smallHeap.add(bigHeap.remove());
-	
+      if (smallHeap.size() == 0 && bigHeap.size() ==0) smallHeap.add(a);
+      else{
+        if (a > smallHeap.peek()){
+          bigHeap.add(a);
+          if (bigHeap.size() - smallHeap.size() > 1) smallHeap.add(bigHeap.remove());
+        }
+        else{
+          smallHeap.add(a);
+          if (smallHeap.size() - bigHeap.size() > 1) bigHeap.add(smallHeap.remove());
+        }
+      }
     }
 
     public double getMedian(){
