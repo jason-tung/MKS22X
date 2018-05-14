@@ -1,5 +1,5 @@
  import java.util.*;
-
+ 
 public class RunningMedian{
     public MyHeap<Double> smallHeap;
     public MyHeap<Double> bigHeap;
