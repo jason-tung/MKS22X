@@ -8,12 +8,14 @@ class Location implements Comparable<Location>{
     private int x,y;
     private Location previous;
     private int distance;
+    private int distSoFar;
 
-    public Location(int _x, int _y, Location prev, int dist){
+    public Location(int _x, int _y, Location prev, int dist, int distSoFar){
 	x = _x;
 	y = _y;
 	previous = prev;
   distance = dist;
+  this.distSoFar = distSoFar;
     }
 
     public int getX(){
@@ -28,6 +30,10 @@ class Location implements Comparable<Location>{
 	return previous;
     }
 
+    public int getDistSoFar(){
+	return distSoFar;
+    }
+
     public int getDistance(){
       return distance;
     }
@@ -40,7 +46,7 @@ class Location implements Comparable<Location>{
     }
 
     public int compareTo(Location other){
-      return distance -  other.distance;
+	return distance + distSoFar -  (other.distance + other.distSoFar);
     }
 }
 
@@ -107,6 +113,11 @@ class FrontierPriorityQueue implements Frontier{
 class Maze{
   private Location start,end;
   public char[][] maze;
+    private boolean isAStar;
+
+    public void setAStar(boolean a){
+	isAStar = A;
+    }
 
    public Maze(String filename) throws FileNotFoundException, IllegalStateException{
         Scanner dogs = new Scanner(new File(filename));
@@ -132,11 +143,11 @@ class Maze{
 			maze[r][c] = line.charAt(c);
 			if (maze[r][c] == 'S'){
 			    nums++;
-			    start = new Location(c,r,null, 0);
+			    start = new Location(c,r,null, 0, 0);
 			}
 			if (maze[r][c] == 'E'){
 			    nume++;
-			    end = new Location(c,r,null, 0);
+			    end = new Location(c,r,null, 0, 0);
 			}
 	    }   
 	    r++;
@@ -191,8 +202,10 @@ class Maze{
         int tempx = currentX + mod[0];
         int tempy = currentY + mod[1];
         if (tempx >= 0 && tempy >= 0 && tempx < maze[0].length && tempy < maze.length && (maze[tempy][tempx] == ' ' || maze[tempy][tempx] == 'E' || maze[tempy][tempx] == 'S'))
-	       temp.add(new Location(tempx,tempy,n, getDistance(tempx, tempy, end)));
+	    if (!isAStar) temp.add(new Location(tempx,tempy,n, getDistance(tempx, tempy, end), 0));
+	    else temp.add(new Location(tempx,tempy,n, getDistance(tempx, tempy, end),  n.getDistSoFar() + 1));
       }
+      
       Location[] neighbors = new Location[temp.size()];
       for (int i = 0; i < neighbors.length; i++){
 	  neighbors[i] = temp.get(i);
@@ -246,8 +259,10 @@ public class MazeSolver{
     else if( mode == 1){
       frontier = new FrontierStack();
     }
-    else{
-      frontier = new FrontierPriorityQueue();
+    else {
+	maze.setAStar(true);
+	if(mode == 2)maze.setAStar(false);
+	frontier = new FrontierPriorityQueue();
     }
     //System.out.println(maze.getStart());
     frontier.add(maze.getStart());
