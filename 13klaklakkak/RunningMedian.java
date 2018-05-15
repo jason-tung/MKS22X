@@ -1,10 +1,10 @@
  import java.util.*;
  
-public class RunningMedians{
+public class RunningMedian{
     public MyHeap<Double> smallHeap;
     public MyHeap<Double> bigHeap;
 
-    public RunningMedians(){
+    public RunningMedian(){
 	smallHeap = new MyHeap<>();
 	bigHeap = new MyHeap<>(false);
     }
@@ -30,7 +30,7 @@ public class RunningMedians{
     }
 
     public static void main(String[] args){
-      RunningMedians kevin = new RunningMedians();
+      RunningMedian kevin = new RunningMedian();
       ArrayList<Double> wesley = new ArrayList<>();
       double[] list = {2,4,6,2,7,2,4,6,3.2,76.46,83.2,7.2, 3.2, 4.5, 5.5,3.2,6.7};
       //double[] list = {0,1,2,3,4,5,6,7,8,9,10};
@@ -43,7 +43,7 @@ public class RunningMedians{
       return "[" + smallHeap.toString() + "] " + "[" + bigHeap + "]";
     }
 
-    public static void test(RunningMedians k, ArrayList<Double> w, double num){
+    public static void test(RunningMedian k, ArrayList<Double> w, double num){
       System.out.println("adding: " + num);
       k.add(num);
       System.out.println("kevin " + k);
