@@ -311,7 +311,7 @@ public class MazeSolver{
 	    MazeSolver kevin = new MazeSolver("data4.dat");
 	    System.out.println(kevin);
 	    kevin.setAnimate(true);
-	    System.out.println(kevin.solve(3));
+	    System.out.println(kevin.solve(Integer.valueOf(args[0])));
 	    System.out.println(kevin);
 	    kevin.setAnimate(false);
 	}
