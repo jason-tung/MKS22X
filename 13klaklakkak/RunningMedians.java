@@ -1,10 +1,10 @@
  import java.util.*;
  
-public class RunningMedian{
+public class RunningMedians{
     public MyHeap<Double> smallHeap;
     public MyHeap<Double> bigHeap;
 
-    public RunningMedian(){
+    public RunningMedians(){
 	smallHeap = new MyHeap<>();
 	bigHeap = new MyHeap<>(false);
     }
@@ -30,7 +30,7 @@ public class RunningMedian{
     }
 
     public static void main(String[] args){
-      RunningMedian kevin = new RunningMedian();
+      RunningMedians kevin = new RunningMedians();
       ArrayList<Double> wesley = new ArrayList<>();
       double[] list = {2,4,6,2,7,2,4,6,3.2,76.46,83.2,7.2, 3.2, 4.5, 5.5,3.2,6.7};
       //double[] list = {0,1,2,3,4,5,6,7,8,9,10};
@@ -43,7 +43,7 @@ public class RunningMedian{
       return "[" + smallHeap.toString() + "] " + "[" + bigHeap + "]";
     }
 
-    public static void test(RunningMedian k, ArrayList<Double> w, double num){
+    public static void test(RunningMedians k, ArrayList<Double> w, double num){
       System.out.println("adding: " + num);
       k.add(num);
       System.out.println("kevin " + k);
@@ -60,8 +60,8 @@ public class RunningMedian{
 }
 
 /*
-  RunningMedian.java
-  -RunningMedian() - makes an empty container for Doubles.
+  RunningMedians.java
+  -RunningMedians() - makes an empty container for Doubles.
   -void add(Double) - insert a Double into the data structure.
   -Double getMedian() - return the current median, throws NoSuchElementException when size is 0.
   -int size()
