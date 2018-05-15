@@ -116,7 +116,7 @@ class Maze{
     private boolean isAStar;
 
     public void setAStar(boolean a){
-	isAStar = A;
+	isAStar = a;
     }
 
    public Maze(String filename) throws FileNotFoundException, IllegalStateException{
@@ -251,7 +251,10 @@ public class MazeSolver{
     }
 
 
-  public static boolean animate = false;
+  public  boolean animate;
+    public void setAnimate(boolean a){
+	animate = a;
+    }
   public boolean solve(int mode){
    if (mode == 0){
       frontier = new FrontierQueue();
@@ -307,13 +310,14 @@ public class MazeSolver{
 	try{
 	    MazeSolver kevin = new MazeSolver("data4.dat");
 	    System.out.println(kevin);
-	    System.out.println(kevin.maze.getStart());
-	    System.out.println(kevin.maze.getEnd());
-      System.out.println(Arrays.deepToString(kevin.maze.getNeighbors(new Location(1,5,null, 0))));
-      System.out.println(kevin.solve(3));
-      System.out.println(kevin);
+	    kevin.setAnimate(true);
+	    System.out.println(kevin.solve(3));
+	    System.out.println(kevin);
+	    kevin.setAnimate(false);
 	}
 	catch (FileNotFoundException e){
+	    e.printStackTrace();
 	}
     }
+    
 }
