@@ -231,6 +231,7 @@ public class MazeSolver{
 
   public MazeSolver(String mazeText)throws FileNotFoundException, IllegalStateException{
       maze = new Maze(mazeText);
+      animate = false;
   }
 
   //Default to BFS
@@ -308,9 +309,9 @@ public class MazeSolver{
 
     public static void main(String[] args){
 	try{
-	    MazeSolver kevin = new MazeSolver("data4.dat");
+	    MazeSolver kevin = new MazeSolver("data5.dat");
 	    System.out.println(kevin);
-	    kevin.setAnimate(true);
+	    //kevin.setAnimate(true);
 	    System.out.println(kevin.solve(Integer.valueOf(args[0])));
 	    System.out.println(kevin);
 	    kevin.setAnimate(false);
