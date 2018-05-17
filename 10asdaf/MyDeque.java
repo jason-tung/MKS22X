@@ -23,13 +23,12 @@ public class MyDeque<E>{
     }
 
     
-    public String toString1(){
-        String str = "[";
+    public String toString(){
+        String str = "";
         for (int i = 0; i < size; i++){
-            str += data[(start + 1)%data.length] + ",";
+            str += data[(start + i)%data.length] + ", ";
         }
-        if (size != 0) str = str.substring(0,size - 1);
-        return str + "]";
+        return "[" + str + "]";
 
     }
 
@@ -41,11 +40,11 @@ public class MyDeque<E>{
     private void resize(){
 	   E[] ary = (E[]) new Object[2 * size];
        for (int i = 0; i < size; i++){
-            ary[i] = data[(start + 1)%data.length];
+            ary[i] = data[(start + i)%data.length];
        }
        data = ary;
-       start =0; 
-       end = size - 1;
+       start = 0; 
+       end = size;
     }
 
     
@@ -60,9 +59,12 @@ public class MyDeque<E>{
     public void addLast(E element){
         check(0);
         if (element == null) throw new NullPointerException();
-        end = (end + 1) % data.length;
+
         data[end] = element;
+        
+                end = Math.floorMod(end + 1, data.length);
         size++;
+
     }
 
     public E removeFirst(){
@@ -98,6 +100,8 @@ public class MyDeque<E>{
                 break;
             case 0:
                 if (size == data.length) resize();
+                
+
                 break;
         }
     }
@@ -106,6 +110,7 @@ public class MyDeque<E>{
     /**-----------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
     public static void main(String[] args){
+        /*
         MyDeque<Integer> kevin = new MyDeque<Integer>() ;
 	System.out.println(kevin);
         kevin.addFirst(3232);
@@ -120,13 +125,15 @@ public class MyDeque<E>{
 	System.out.println(kevin);
 	kevin.removeLast();
 	System.out.println(kevin);
+    */
+    crystalDriver(args);
 	
     }
     public void test(E ele){
 	addFirst(ele);
 	System.out.println(this);
     }
-    public String toString(){
+    public String toString1(){
     String ans = "[";
     if(start < end){
       for (int i = start; i <= end; i++){
@@ -187,7 +194,7 @@ public class MyDeque<E>{
       errorEvaluation = errorEvaluation.substring(0, errorEvaluation.length() - 2);
       System.out.println(errorEvaluation);
       System.out.println("MyDeque: " + a1);
-      System.out.println("Actual Deque: " + b);
+      System.out.println("realone: " + b);
     }
     else{
       System.out.println("Your deque is bug-free!");
