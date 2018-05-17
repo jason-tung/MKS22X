@@ -231,6 +231,7 @@ public class MazeSolver{
 
   public MazeSolver(String mazeText)throws FileNotFoundException, IllegalStateException{
       maze = new Maze(mazeText);
+      animate = false;
   }
 
   //Default to BFS
@@ -280,12 +281,19 @@ public class MazeSolver{
         }
         //*****************************************************************************************************
       Location temp = frontier.next();
-      if (temp.equals(maze.getEnd())) return true;
-      if (maze.maze[temp.getY()][temp.getX()] != 's') maze.maze[temp.getY()][temp.getX()] = '.';
+      if (temp.equals(maze.getEnd())){
+        //temp = temp.getPrevious();
+        while (!temp.equals(maze.getStart()) ){
+          if (maze.maze[temp.getY()][temp.getX()] != 'S' && maze.maze[temp.getY()][temp.getX()] != 'E')  maze.maze[temp.getY()][temp.getX()] = '@';
+          temp = temp.getPrevious();
+        }
+        return true;
+      }
+      if (maze.maze[temp.getY()][temp.getX()] != 'S' && maze.maze[temp.getY()][temp.getX()] != 'E') maze.maze[temp.getY()][temp.getX()] = '.';
       for (Location neighbor: maze.getNeighbors(temp)){
-        if (neighbor.equals(maze.getEnd())) return true;
+        //if (neighbor.equals(maze.getEnd())) return true;
         frontier.add(neighbor);
-        maze.maze[neighbor.getY()][neighbor.getX()] = '?';
+        if (maze.maze[neighbor.getY()][neighbor.getX()] != 'S' && maze.maze[neighbor.getY()][neighbor.getX()] != 'E')  maze.maze[neighbor.getY()][neighbor.getX()] = '?';
       }
     }
     //initialize your frontier
@@ -310,8 +318,8 @@ public class MazeSolver{
 	try{
 	    MazeSolver kevin = new MazeSolver("data4.dat");
 	    System.out.println(kevin);
-	    kevin.setAnimate(true);
-	    System.out.println(kevin.solve(3));
+	    //kevin.setAnimate(true);
+	    System.out.println(kevin.solve(Integer.valueOf(args[0])));
 	    System.out.println(kevin);
 	    kevin.setAnimate(false);
 	}
