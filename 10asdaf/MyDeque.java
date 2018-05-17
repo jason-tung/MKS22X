@@ -106,7 +106,25 @@ public class MyDeque<E>{
     /**-----------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
     public static void main(String[] args){
-        crystalDriver(args);
+        MyDeque<Integer> kevin = new MyDeque<Integer>() ;
+	System.out.println(kevin);
+        kevin.addFirst(3232);
+	System.out.println(kevin);
+	kevin.addLast(676);
+	System.out.println(kevin);
+	kevin.addFirst(9999);
+	System.out.println(kevin);
+	kevin.addLast(1212112);
+	System.out.println(kevin);
+	kevin.removeFirst();
+	System.out.println(kevin);
+	kevin.removeLast();
+	System.out.println(kevin);
+	
+    }
+    public void test(E ele){
+	addFirst(ele);
+	System.out.println(this);
     }
     public String toString(){
     String ans = "[";
@@ -126,6 +144,8 @@ public class MyDeque<E>{
     ans = ans.substring(0, ans.length() - 2) + "]";
     return ans;
   }
+
+ 
 
   public static void crystalDriver(String[] args) {
     MyDeque<String> a = new MyDeque<>(), a1 = new MyDeque<>();
