@@ -194,10 +194,10 @@ public class MyDeque<E>{
       errorEvaluation = errorEvaluation.substring(0, errorEvaluation.length() - 2);
       System.out.println(errorEvaluation);
       System.out.println("MyDeque: " + a1);
-      System.out.println("realone: " + b);
+      System.out.println("Actual Deque: " + b);
     }
     else{
       System.out.println("Your deque is bug-free!");
     }
-  }
+    }
 }
