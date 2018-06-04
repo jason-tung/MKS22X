@@ -1,2 +1,2 @@
-#, MKS22X
-apcs, term, 2
+# MKS22X
+apcs term 2
