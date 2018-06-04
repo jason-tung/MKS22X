@@ -172,11 +172,7 @@ class Maze{
 	String str = "";
 	for(int r = 0; r < maze.length; r++){
 	    for(int c = 0; c < maze[0].length; c++){
-	    	if (maze[r][c] == '@') str += "\033[32m@\033[m";
-		else if (maze[r][c] == '#') str += "\033[35m#\033[m";
-		else if (maze[r][c] == '?') str += "\033[34m?\033[m";
-		else if (maze[r][c] == '.') str += "\033[31m.\033[m";
-		else str += "\033[36m" + maze[r][c] + "\033[m";
+	    	str += maze[r][c];
 		if (c == maze[0].length-1){
 		    str += "\n";
 		}
@@ -317,15 +313,15 @@ public class MazeSolver{
     public static void main(String[] args){
 	try{
 	    MazeSolver kevin = new MazeSolver("data4.dat");
-	    System.out.println(kevin);
+	    //System.out.println(kevin);
 	    //kevin.setAnimate(true);
 	    System.out.println(kevin.solve(Integer.valueOf(args[0])));
-	    System.out.println(kevin);
-	    kevin.setAnimate(false);
+	    //System.out.println(kevin);
+	    //kevin.setAnimate(false);
 	}
 	catch (FileNotFoundException e){
 	    e.printStackTrace();
 	}
     }
-    
+
 }
