@@ -1,3 +1,5 @@
+//adding to one side and removing from the other
+
 import java.util.*;
 public class MyDeque<E>{
     private E[] data;
