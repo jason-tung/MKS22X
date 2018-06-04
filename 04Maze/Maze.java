@@ -1,42 +1,42 @@
-import java.util.*;
-import java.io.*;
-public class Maze{
+import, java.util.*;
+import, java.io.*;
+public, class, Maze{
 
-    public static void main(String[] dogs){
+, , , , public, static, void, main(String[], dogs){
 	try{
-	    Maze dog = new Maze(dogs[0]);
-	    System.out.println(dog);
-	    dog.setAnimate(true);
-	    System.out.println(dog.solve());
+	, , , , Maze, dog, =, new, Maze(dogs[0]);
+	, , , , System.out.println(dog);
+	, , , , dog.setAnimate(true);
+	, , , , System.out.println(dog.solve());
 
 	}
-	catch (FileNotFoundException e){
-	    System.out.println("error error 123");
-	    //System.exit(1);
+	catch, (FileNotFoundException, e){
+	, , , , System.out.println("error, error, 123");
+	, , , , //System.exit(1);
 	}
-    }
-    private char[][]maze;
-    private boolean animate;
-    private int[][]dirary = {{1,0},{-1,0},{0,1},{0,-1}};
+, , , , }
+, , , , private, char[][]maze;
+, , , , private, boolean, animate;
+, , , , private, int[][]dirary, =, {{1,0},{-1,0},{0,1},{0,-1}};
 
-    public String toString(){
-	String str = "";
-	for(int r = 0; r < maze.length; r++){
-	    for(int c = 0; c < maze[0].length; c++){
-	    	if (maze[r][c] == '@') str += "\033[32m@\033[m";
-			else if (maze[r][c] == '#') str += "\033[35m#\033[m";
-			else if (maze[r][c] == '.') str += "\033[31m.\033[m";
-			else str += "\033[36m" + maze[r][c] + "\033[m";
-		if (c == maze[0].length-1){
-		    str += "\n";
+, , , , public, String, toString(){
+	String, str, =, "";
+	for(int, r, =, 0;, r, <, maze.length;, r++){
+	, , , , for(int, c, =, 0;, c, <, maze[0].length;, c++){
+	, , , , 	if, (maze[r][c], ==, '@'), str, +=, "\033[32m@\033[m";
+			else, if, (maze[r][c], ==, '#'), str, +=, "\033[35m#\033[m";
+			else, if, (maze[r][c], ==, '.'), str, +=, "\033[31m.\033[m";
+			else, str, +=, "\033[36m", +, maze[r][c], +, "\033[m";
+		if, (c, ==, maze[0].length-1){
+		, , , , str, +=, "\n";
 		}
-	    }
+	, , , , }
 	}
-	return str;
-    }
+	return, str;
+, , , , }
 
-    public Maze(String filename) throws FileNotFoundException, IllegalStateException{
-        Scanner dogs = new Scanner(new File(filename));
+, , , , public, Maze(String, filename), throws, FileNotFoundException,, IllegalStateException{
+, , , , , , , , Scanner, dogs = new Scanner(new File(filename));
 	int numrow = 0;
 	int numcol = 0;
 	String cat = "";

@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="261ab66e-4d6f-466b-bb75-a3210ec1a822" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dogs.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04Maze/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/04Maze/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.1.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.1.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.10.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.10.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.2.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.2.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.3.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.3.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.4.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.4.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.5.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.5.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.6.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.6.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.7.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.7.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.8.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.8.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/ctravel/ctravel.9.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/ctravel/ctravel.9.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/makelake/makelake.10.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/makelake/makelake.10.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/makelake/makelake.3.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/makelake/makelake.3.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05USACO/makelake/makelake.5.in" beforeDir="false" afterPath="$PROJECT_DIR$/05USACO/makelake/makelake.5.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cases.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cases.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dogs.csv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +58,8 @@
       <file leaf-file-name="cases.csv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cases.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+            <state relative-caret-position="68">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -92,9 +107,11 @@
       <find>,</find>
       <find />
       <find>str +=</find>
+      <find />
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
+      <replace />
       <replace>,</replace>
     </replaceStrings>
   </component>
@@ -238,12 +255,12 @@
       <workItem from="1528077291052" duration="3160000" />
       <workItem from="1528080702333" duration="91000" />
       <workItem from="1528081062257" duration="460000" />
-      <workItem from="1528081536092" duration="148000" />
+      <workItem from="1528081536092" duration="219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3859000" />
+    <option name="totallyTimeSpent" value="3930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -264,6 +281,7 @@
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -277,7 +295,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,8 +500,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cases.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+        <state relative-caret-position="68">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>
