@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/cases.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="78" lean-forward="true" selection-start-line="2" selection-start-column="78" selection-end-line="2" selection-end-column="78" />
+              <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -88,10 +88,8 @@
       <find>@</find>
       <find>while</find>
       <find />
-      <find>,</find>
     </findStrings>
     <replaceStrings>
-      <replace>,</replace>
       <replace>,</replace>
     </replaceStrings>
   </component>
@@ -230,12 +228,12 @@
       <updated>1528077282930</updated>
       <workItem from="1528077291052" duration="3160000" />
       <workItem from="1528080702333" duration="91000" />
-      <workItem from="1528081062257" duration="140000" />
+      <workItem from="1528081062257" duration="118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3391000" />
+    <option name="totallyTimeSpent" value="3369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -421,7 +419,7 @@
     <entry file="file://$PROJECT_DIR$/cases.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="78" lean-forward="true" selection-start-line="2" selection-start-column="78" selection-end-line="2" selection-end-column="78" />
+          <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
         </state>
       </provider>
     </entry>
